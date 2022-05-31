@@ -1619,7 +1619,13 @@ vehicle = {
 	get_vehicle_brand = function(veh)
 		return VEHICLE._GET_MAKE_NAME_FROM_VEHICLE_MODEL(ENTITY.GET_ENTITY_MODEL(veh))
 	end,
-	--get_vehicle_model = !#! NO MATCH FOUND !#!,
+	get_vehicle_model = function(veh)
+		local str = util.reverse_joaat(ENTITY.GET_ENITTY_MODEL(veh))
+		if str == "" then
+			return nil
+		end
+		return str
+	end,
 	--get_vehicle_brand_label = !#! NO MATCH FOUND !#!,
 	--get_vehicle_model_label = !#! NO MATCH FOUND !#!,
 	start_vehicle_horn = VEHICLE.START_VEHICLE_HORN,
