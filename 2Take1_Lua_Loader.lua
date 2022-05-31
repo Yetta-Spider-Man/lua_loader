@@ -192,11 +192,6 @@ type = function (t)
 	end
 end
 
-local function get_draw_handler(veh)
-	veh = entities.handle_to_pointer(veh)
-	return memory.read_long(veh + 0x48)
-end
-
 local function RGBAToInt(R, G, B, A)
 	A = A or 255
 	return (
@@ -1501,12 +1496,10 @@ vehicle = {
 		return colour
 	end,
 	get_vehicle_pearlecent_color = function (veh)
-		local draw_handler = get_draw_handler(veh)
-		return memory.read_int(draw_handler + 0x038C)
+		return entities.vehicle_draw_handler_get_pearlecent_colour(entities.get_draw_handler(veh))
 	end,
 	get_vehicle_wheel_color = function (veh)
-		local draw_handler = get_draw_handler(veh)
-		return memory.read_ubyte(draw_handler + 0x03F9)
+		return entities.vehicle_draw_handler_get_wheel_colour(entities.get_draw_handler(veh))
 	end,
 	set_vehicle_fullbeam = VEHICLE.SET_VEHICLE_FULLBEAM,
 	set_vehicle_custom_primary_colour = VEHICLE.SET_VEHICLE_CUSTOM_PRIMARY_COLOUR,
