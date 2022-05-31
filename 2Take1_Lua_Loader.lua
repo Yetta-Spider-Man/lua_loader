@@ -1526,8 +1526,13 @@ vehicle = {
 	get_livery_name = VEHICLE.GET_LIVERY_NAME,
 	set_vehicle_window_tint = VEHICLE.SET_VEHICLE_WINDOW_TINT,
 	get_vehicle_window_tint = VEHICLE.GET_VEHICLE_WINDOW_TINT,
-	get_all_vehicle_model_hashes = function ()  				--might implement using Aarons hash-db.lua
-		return {}
+	get_all_vehicle_model_hashes = function ()
+		local t = {}
+		local v = util.get_vehicles()
+		for _, entry in pairs(v) do
+			table.insert(t, util.joaat(entry.name))
+		end
+		return t
 	end,
 	get_all_vehicles = entities.get_all_vehicles_as_handles,
 	modify_vehicle_top_speed = VEHICLE.MODIFY_VEHICLE_TOP_SPEED,
