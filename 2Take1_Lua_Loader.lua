@@ -292,11 +292,11 @@ local player_feature_setters = {
 	on = function (self, val)
 		if self.id_toggle then
 			for _, command in pairs(self.feats) do
-				command.id_toggle = tonumber(val)
+				command.id_toggle = val
 			end
 		else
 			for _, command in pairs(self.feats) do
-				command.on = tonumber(val)
+				command.on = val
 			end
 		end
 		rawset(self, "_on", val)
@@ -345,10 +345,10 @@ local feature_setters = {
 	end,
 	on = function (self, val)
 		if self.id_toggle then
-			stand.set_value(self.id_toggle, tonumber(val))
+			stand.set_value(self.id_toggle, val)
 		else
 			if self.type == feature_type_ids.player.toggle or self.type == feature_type_ids.regular.toggle then
-				stand.set_value(self.id, tonumber(val))
+				stand.set_value(self.id, val)
 			end
 		end
 		rawset(self, "_on", val)
