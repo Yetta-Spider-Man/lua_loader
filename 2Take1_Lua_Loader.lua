@@ -855,7 +855,9 @@ ui = {
 		GRAPHICS.DRAW_LINE(pos1.x, pos1.y, pos1.z, pos2.x, pos2.y, pos2.z, r, g, b, a)
 	end,
 	draw_text = notif_not_imp,
-	set_text_scale = HUD.SET_TEXT_SCALE,
+	set_text_scale = function (size)
+		return HUD.SET_TEXT_SCALE(1.0, size)
+	end,
 	set_text_color = HUD.SET_TEXT_COLOUR,
 	set_text_font = HUD.SET_TEXT_FONT,
 	set_text_wrap = HUD.SET_TEXT_WRAP,
