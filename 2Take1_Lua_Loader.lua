@@ -1057,9 +1057,7 @@ ped = {
 	set_create_random_cops = PED.SET_CREATE_RANDOM_COPS,
 	can_create_random_cops = PED.CAN_CREATE_RANDOM_COPS,
 	is_ped_swimming = PED.IS_PED_SWIMMING,
-	is_ped_swimming_underwater = function (ped)  --just returning false for now
-		return false
-	end,
+	is_ped_swimming_underwater = PED.IS_PED_SWIMMING_UNDER_WATER,
 	clear_relationship_between_groups = PED.CLEAR_RELATIONSHIP_BETWEEN_GROUPS,
 	set_relationship_between_groups = PED.SET_RELATIONSHIP_BETWEEN_GROUPS,
 	get_ped_head_blend_data = PED.GET_PED_HEAD_BLEND_DATA,
