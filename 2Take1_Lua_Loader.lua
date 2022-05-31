@@ -1537,24 +1537,23 @@ vehicle = {
 	can_vehicle_parachute_be_activated = VEHICLE._GET_VEHICLE_CAN_ACTIVATE_PARACHUTE,
 	set_vehicle_can_be_locked_on = VEHICLE._SET_VEHICLE_CAN_BE_LOCKED_ON,
 	get_vehicle_current_gear =  function (veh)
-		return memory.read_byte(entities.handle_to_pointer(veh) + 0x0892)
+		return entities.get_current_gear(entities.handle_to_pointer(veh))
 	end,
 	set_vehicle_current_gear = function (veh, gear)
-		memory.write_byte(entities.handle_to_pointer(veh) + 0x0892, gear)
+		entities.set_current_gear(entities.handle_to_pointer(veh), gear)
 	end,
 	get_vehicle_next_gear = function (veh)
-		memory.read_byte(entities.handle_to_pointer(veh) + 0x0890)
+		return entities.get_next_gear(entities.handle_to_pointer(veh))
 	end,
 	set_vehicle_next_gear = function (veh, gear)
-		memory.write_byte(entities.handle_to_pointer(veh) + 0x0890, gear)
+		entities.set_next_gear(entities.handle_to_pointer(veh), gear)
 	end,
 	--get_vehicle_max_gear = !#! NO MATCH FOUND !#!,
 	--set_vehicle_max_gear = !#! NO MATCH FOUND !#!,
 	--get_vehicle_gear_ratio = !#! NO MATCH FOUND !#!,
 	--set_vehicle_gear_ratio = !#! NO MATCH FOUND !#!,
 	get_vehicle_rpm = function (veh)
-		veh = entities.handle_to_pointer(veh)
-		return memory.read_float(veh + 0x08D0)
+		return entities.get_rpm(entities.handle_to_pointer(veh))
 	end,
 	get_vehicle_has_been_owned_by_player = function (veh)
 		return entities.get_vehicle_has_been_owned_by_player(entities.handle_to_pointer(veh))
