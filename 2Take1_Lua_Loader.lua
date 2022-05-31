@@ -27,6 +27,13 @@ local function uint_to_int(uint)
 	return memory.read_int(int)
 end
 
+local function int_to_uint(int)
+	if int >= 0 then
+		return int
+	end
+	return (1 << 32) + int
+end
+
 function notif_not_imp()
 	util.toast("not implemented\n send me a message on discord if you see this\n(Murten#0001)")
 	util.log(debug.traceback("not implemented", 2))
@@ -973,7 +980,7 @@ player = {
 		return false
 	end,
 	get_player_model = function (pid)
-		return ENTITY.GET_ENTITY_MODEL(PLAYER.GET_PLAYER_PED(pid))
+		return int_to_uint(ENTITY.GET_ENTITY_MODEL(PLAYER.GET_PLAYER_PED(pid)))
 	end,
 	send_player_sms = function (pid, message)
 		stand.trigger_commands("smstext"..players.get_name(pid).." "..message)
