@@ -1813,7 +1813,7 @@ draw_scaleform_movie_fullscreen = GRAPHICS.DRAW_SCALEFORM_MOVIE_FULLSCREEN,
 draw_scaleform_movie = GRAPHICS.DRAW_SCALEFORM_MOVIE,
 end_scaleform_movie_method = GRAPHICS.END_SCALEFORM_MOVIE_METHOD,
 draw_marker = function (type, pos, dir, rot, scale, red, green, blue, alpha, bobUpAndDown, faceCam, a12, rotate, textureDict, textureName, drawOntEnts)
-	GRAPHICS.DRAW_MARKER(type, pos.x, pos.y, pos.z, dir.x, dir.y, dir.z, rot.x, rot.y, rot.z, scale, red, green, blue, alpha, bobUpAndDown, faceCam, a12, rotate, textureDict or "", textureName or "", drawOntEnts)
+	GRAPHICS.DRAW_MARKER(type, pos.x, pos.y, pos.z, dir.x, dir.y, dir.z, rot.x, rot.y, rot.z, scale.x, scale.y, scale.z, red, green, blue, alpha, bobUpAndDown, faceCam, a12, rotate, textureDict or 0, textureName or 0, drawOntEnts)
 end,
 create_checkpoint = function (type, thisPos, nextPos, radius, red, green, blue, alpha, reserved)
  	return	GRAPHICS.CREATE_CHECKPOINT(type, thisPos.x, thisPos.y, thisPos.z, nextPos.x, nextPos.y, nextPos.z, radius, red, green, blue, alpha, reserved)
