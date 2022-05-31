@@ -902,7 +902,7 @@ player = {
 	set_player_model = PLAYER.SET_PLAYER_MODEL,
 	get_player_group = PLAYER.GET_PLAYER_GROUP,
 	is_player_female = function (pid)
-		return ENTITY.GET_ENITTY_MODEL(PLAYER.GET_PLAYER_PED(pid)) == util.joaat("mp_f_freemode_01")
+		return ENTITY.GET_ENTITY_MODEL(PLAYER.GET_PLAYER_PED(pid)) == util.joaat("mp_f_freemode_01")
 	end,
 	is_player_friend = function (pid)
 		return NETWORK.NETWORK_IS_FRIEND(getGamerHandle(pid))
@@ -973,7 +973,7 @@ player = {
 		return false
 	end,
 	get_player_model = function (pid)
-		return ENTITY.GET_ENITTY_MODEL(PLAYER.GET_PLAYER_PED(pid))
+		return ENTITY.GET_ENTITY_MODEL(PLAYER.GET_PLAYER_PED(pid))
 	end,
 	send_player_sms = function (pid, message)
 		stand.trigger_commands("smstext"..players.get_name(pid).." "..message)
@@ -1660,7 +1660,7 @@ vehicle = {
 		return VEHICLE._GET_MAKE_NAME_FROM_VEHICLE_MODEL(ENTITY.GET_ENTITY_MODEL(veh))
 	end,
 	get_vehicle_model = function(veh)
-		local str = util.reverse_joaat(ENTITY.GET_ENITTY_MODEL(veh))
+		local str = util.reverse_joaat(ENTITY.GET_ENTITY_MODEL(veh))
 		if str == "" then
 			return nil
 		end
