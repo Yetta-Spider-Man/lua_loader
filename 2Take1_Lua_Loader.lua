@@ -1665,8 +1665,12 @@ vehicle = {
 	--get_vehicle_brand_label = !#! NO MATCH FOUND !#!,
 	--get_vehicle_model_label = !#! NO MATCH FOUND !#!,
 	start_vehicle_horn = VEHICLE.START_VEHICLE_HORN,
-	--set_vehicle_gravity_amount = !#! NO MATCH FOUND !#!,
-	--get_vehicle_gravity_amount = !#! NO MATCH FOUND !#!
+	set_vehicle_gravity_amount = function (veh, grav)
+		entities.set_gravity(entities.handle_to_pointer(veh), grav)
+	end,
+	get_vehicle_gravity_amount = function (veh)
+		return entities.get_gravity(entities.handle_to_pointer(veh))
+	end
 }
 
 cutscene = {
