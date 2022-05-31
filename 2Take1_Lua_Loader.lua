@@ -20,6 +20,7 @@ local split = function (input, sep)
     end
     return t
 end
+
 local int = memory.alloc_int()
 local function uint_to_int(uint)
 	memory.write_uint(int, uint)
@@ -810,7 +811,9 @@ ui = {
 	hide_hud_and_radar_this_frame = HUD.HIDE_HUD_AND_RADAR_THIS_FRAME,
 	get_label_text = HUD._GET_LABEL_TEXT,
 	draw_rect = GRAPHICS.DRAW_RECT,
-	draw_line = GRAPHICS.DRAW_LINE,               --HAS A VECTOR
+	draw_line = function (pos1, pos2 , r, g, b, a)
+		GRAPHICS.DRAW_LINE(pos1.x, pos1.y, pos1.z, pos2.x, pos2.y, pos2.z, r, g, b, a)
+	end,
 	draw_text = notif_not_imp,
 	set_text_scale = HUD.SET_TEXT_SCALE,
 	set_text_color = HUD.SET_TEXT_COLOUR,
@@ -820,7 +823,9 @@ ui = {
 	set_text_centre = HUD.SET_TEXT_CENTRE,
 	set_text_right_justify = HUD.SET_TEXT_RIGHT_JUSTIFY,
 	set_text_justification = HUD.SET_TEXT_JUSTIFICATION,
-	set_new_waypoint = HUD.SET_NEW_WAYPOINT,               --HAS A VECTOR
+	set_new_waypoint = function (pos)
+		HUD.SET_NEW_WAYPOINT(pos.x, pos.y)
+	end,
 	get_waypoint_coord = function()
 		local waypoint = HUD.GET_FIRST_BLIP_INFO_ID(8)
 		local coords = HUD.GET_BLIP_COORDS(waypoint)
@@ -831,9 +836,13 @@ ui = {
 	set_waypoint_off = HUD.SET_WAYPOINT_OFF,
 	set_blip_as_mission_creator_blip = HUD.SET_BLIP_AS_MISSION_CREATOR_BLIP,
 	is_mission_creator_blip = HUD.IS_MISSION_CREATOR_BLIP,
-	add_blip_for_radius = HUD.ADD_BLIP_FOR_RADIUS,               --HAS A VECTOR
+	add_blip_for_radius = function (pos, radius)
+		HUD.ADD_BLIP_FOR_RADIUS(pos.x, pos.y, pos.z, radius)
+	end,
 	add_blip_for_pickup = HUD.ADD_BLIP_FOR_PICKUP,
-	add_blip_for_coord = HUD.ADD_BLIP_FOR_COORD,               --HAS A VECTOR
+	add_blip_for_coord = function(pos)
+		HUD.ADD_BLIP_FOR_COORD(pos.x, pos.y, pos.z)
+	end,
 	set_blip_coord = notif_not_imp,
 	get_blip_coord = notif_not_imp,
 	remove_blip = HUD.REMOVE_BLIP,
