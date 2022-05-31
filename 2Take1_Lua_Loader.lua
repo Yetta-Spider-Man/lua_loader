@@ -1557,7 +1557,7 @@ vehicle = {
 		return memory.read_float(veh + 0x08D0)
 	end,
 	get_vehicle_has_been_owned_by_player = function (veh)
-		return false
+		return entities.get_vehicle_has_been_owned_by_player(entities.handle_to_pointer(veh))
 	end,
 	set_vehicle_has_been_owned_by_player = VEHICLE.SET_VEHICLE_HAS_BEEN_OWNED_BY_PLAYER,
 	--get_vehicle_steer_bias = !#! NO MATCH FOUND !#!,
