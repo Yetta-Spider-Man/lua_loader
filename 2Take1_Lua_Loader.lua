@@ -28,7 +28,7 @@ end
 
 function notif_not_imp()
 	util.toast("not implemented\n send me a message on discord if you see this\n(Murten#0001)")
-	util.log(debug.traceback("not implimented", 2))
+	util.log(debug.traceback("not implemented", 2))
 	return -1
 end
 
