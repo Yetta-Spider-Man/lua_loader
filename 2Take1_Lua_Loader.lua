@@ -881,7 +881,7 @@ player = {
 		memory.free(ent)
 		return result
 	end,
-	get_personal_vehicle = entities.get_user_vehicle_as_handle, --NOT THE ACTUAL PERSONAL VEHICLE BUT IT WILL DO FOR NOW
+	get_personal_vehicle = entities.get_user_personal_vehicle_as_handle,
 	set_player_visible_locally = NETWORK.SET_PLAYER_VISIBLE_LOCALLY,
 	set_local_player_visible_locally = NETWORK.SET_LOCAL_PLAYER_VISIBLE_LOCALLY,
 	set_player_as_modder = function ()
