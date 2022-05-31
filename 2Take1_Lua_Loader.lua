@@ -854,7 +854,10 @@ ui = {
 	draw_line = function (pos1, pos2 , r, g, b, a)
 		GRAPHICS.DRAW_LINE(pos1.x, pos1.y, pos1.z, pos2.x, pos2.y, pos2.z, r, g, b, a)
 	end,
-	draw_text = notif_not_imp,
+	draw_text = function (text, pos)
+		util.BEGIN_TEXT_COMMAND_DISPLAY_TEXT(text)
+		HUD.END_TEXT_COMMAND_DISPLAY_TEXT(pos.x, pos.y, 0)
+	end,
 	set_text_scale = function (size)
 		return HUD.SET_TEXT_SCALE(1.0, size)
 	end,
