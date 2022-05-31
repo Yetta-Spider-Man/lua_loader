@@ -745,6 +745,7 @@ menu = {
 			stand.delete(id)
 		end
 	end,
+	create_thread = util.create_thread,
 	is_trusted_mode_enabled = function ()
 		return true
 	end
