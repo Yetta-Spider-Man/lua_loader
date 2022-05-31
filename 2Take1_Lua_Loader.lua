@@ -21,12 +21,6 @@ local split = function (input, sep)
     return t
 end
 
-local int = memory.alloc_int()
-local function uint_to_int(uint)
-	memory.write_uint(int, uint)
-	return memory.read_int(int)
-end
-
 local function int_to_uint(int)
 	if int >= 0 then
 		return int
@@ -1348,7 +1342,7 @@ local function populate_hash_to_weapon_table()
 	if not weapon_list then weapon_list = util.get_weapons() end
 	weapon_hash_to_weapon = {}
 	for _, weapon in ipairs(weapon_list) do
-		weapon_hash_to_weapon[weapon.hash] = weapon
+		weapon_hash_to_weapon[int_to_uint(weapon.hash)] = weapon
 	end
 end
 weapon = {
@@ -1380,8 +1374,6 @@ weapon = {
 		end
 
 		if not hash then return "invalid weapon" end
-
-		hash = uint_to_int(hash)
 
 		local weapon = weapon_hash_to_weapon[hash]
 
