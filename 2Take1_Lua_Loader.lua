@@ -744,6 +744,9 @@ menu = {
 		else
 			stand.delete(id)
 		end
+	end,
+	is_trusted_mode_enabled = function ()
+		return true
 	end
 }
 
