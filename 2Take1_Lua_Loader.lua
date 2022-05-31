@@ -1568,7 +1568,7 @@ vehicle = {
 		local t = {}
 		local v = util.get_vehicles()
 		for _, entry in pairs(v) do
-			table.insert(t, util.joaat(entry.name))
+			table.insert(t, int_to_uint(util.joaat(entry.name)))
 		end
 		return t
 	end,
