@@ -1797,14 +1797,10 @@ gameplay = {
 	set_blackout = GRAPHICS.SET_ARTIFICIAL_LIGHTS_STATE,
 	set_mobile_radio = AUDIO.SET_MOBILE_RADIO_ENABLED_DURING_GAMEPLAY,
 	get_game_state = function()
-		local ped = entities.handle_to_pointer(players.user_ped())
-		local playerinfo = memory.read_long(ped+0x10c8)
-		return memory.read_int(playerinfo+0x1d8)
+		return entities.player_info_get_game_state(entities.get_player_info(entities.handle_to_pointer(players.user_ped())))
 	end,
 	is_game_state = function(state)
-		local ped = entities.handle_to_pointer(players.user_ped())
-		local playerinfo = memory.read_long(ped+0x10c8)
-		return memory.read_int(playerinfo+0x1d8) == state
+		return gameplay.get_game_state() == state
 	end,
 	clear_area_of_objects = function (vec, radius, flags)
 		MISC.CLEAR_AREA_OF_OBJECTS(vec.x, vec.y, vec.z, radius, flags)
