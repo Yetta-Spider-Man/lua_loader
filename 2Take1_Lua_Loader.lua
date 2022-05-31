@@ -1833,7 +1833,7 @@ gameplay = {
 	get_frame_time = MISC.GET_FRAME_TIME,
 	shoot_single_bullet_between_coords = function (start, end_point, damage, weapon, owner, audible, invisible, speed)
 		MISC.SHOOT_SINGLE_BULLET_BETWEEN_COORDS(start.x, start.y, start.z, end_point.x, end_point.y, end_point.z, damage, weapon, owner, audible, invisible, speed)
-	end,               --HAS A VECTOR
+	end,
 	find_spawn_point_in_direction = function (pos, fwd, dist)
 		local vec_ptr = vec3.new()
 		local status MISC.FIND_SPAWN_POINT_IN_DIRECTION(pos.x, pos.y, pos.z, fwd.x, fwd.y, fwd.z, dist, vec_ptr)
