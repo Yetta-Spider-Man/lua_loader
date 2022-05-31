@@ -1700,7 +1700,7 @@ request_named_ptfx_asset = STREAMING.REQUEST_NAMED_PTFX_ASSET,
 has_named_ptfx_asset_loaded = STREAMING.HAS_NAMED_PTFX_ASSET_LOADED,
 remove_named_ptfx_asset = STREAMING.REMOVE_NAMED_PTFX_ASSET,
 set_next_ptfx_asset = GRAPHICS.USE_PARTICLE_FX_ASSET,
-set_next_ptfx_asset_by_hash = notif_not_imp,
+set_next_ptfx_asset_by_hash = util.use_particle_fx_asset,
 start_ptfx_looped_on_entity = function (name, ent, offset, rot, scale)
 	GRAPHICS.START_PARTICLE_FX_LOOPED_ON_ENTITY(name, ent, offset.x, offset.y, offset.z, rot.x, rot.y, rot.z, scale)
 end,
