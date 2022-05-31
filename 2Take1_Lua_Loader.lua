@@ -40,6 +40,42 @@ native_invoker.get_return_value_vector3 = function ()
 	return v3(table.x, table.y, table.z)
 end
 
+function MenuKey()
+	return {
+		keys = {},
+		push_vk = function (self, key)
+			self.keys[#self.keys+1] = key
+		end,
+		push_str = function (self, key)
+			self.keys[#self.keys+1] = key
+		end,
+		pop = function (self)
+			self.keys[#self.keys] = nil
+		end,
+		clear = function (self)
+			self.keys = {}
+		end,
+		is_down = function (self)
+			if #self.keys == 0 then return false end
+			for _, key in ipairs(self.keys) do
+				if not util.is_key_down(key) then
+					return false
+				end
+			end
+			return true
+		end,
+		is_down_stepped = function (self)
+			if #self.keys == 0 then return false end
+			for _, key in ipairs(self.keys) do
+				if not util.is_key_down(key) then
+					return false
+				end
+			end
+			return true
+		end
+	}
+end
+
 local feature_type_ids = { -- The table values are stolen from kek's essentials.lua
 	regular = {
 		action = 1 << 9,
