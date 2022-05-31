@@ -5,13 +5,6 @@
 -- With some implementation details copied from 2Take1Menu itself as convenient
 
 
---IMPLEMENT IS FLOAT BOOL
-
---FIX MOD SETTER
-
---FIX MIN, MAX SETTERS
-
-
 -- Prepare 2Take1 Lua Loader
 util.require_natives(1651208000)
 util.keep_running()
@@ -1514,11 +1507,11 @@ vehicle = {
 	set_vehicle_custom_primary_colour = VEHICLE.SET_VEHICLE_CUSTOM_PRIMARY_COLOUR,
 	get_vehicle_custom_primary_colour = VEHICLE.GET_VEHICLE_CUSTOM_PRIMARY_COLOUR,
 	clear_vehicle_custom_primary_colour = VEHICLE.CLEAR_VEHICLE_CUSTOM_PRIMARY_COLOUR,
-	--is_vehicle_primary_colour_custom = !#! NO MATCH FOUND !#!, 						to much effort for to little reward
+	is_vehicle_primary_colour_custom = VEHICLE.GET_IS_VEHICLE_PRIMARY_COLOUR_CUSTOM,
 	set_vehicle_custom_secondary_colour = VEHICLE.SET_VEHICLE_CUSTOM_SECONDARY_COLOUR,
 	get_vehicle_custom_secondary_colour = VEHICLE.GET_VEHICLE_CUSTOM_SECONDARY_COLOUR,
 	clear_vehicle_custom_secondary_colour = VEHICLE.CLEAR_VEHICLE_CUSTOM_SECONDARY_COLOUR,
-	--is_vehicle_secondary_colour_custom = !#! NO MATCH FOUND !#!,						to much effort for to little reward
+	is_vehicle_secondary_colour_custom = VEHICLE.GET_IS_VEHICLE_SECONDARY_COLOUR_CUSTOM,
 	set_vehicle_custom_pearlescent_colour = notif_not_imp,
 	get_vehicle_custom_pearlescent_colour = notif_not_imp,
 	set_vehicle_custom_wheel_colour = notif_not_imp,
@@ -1631,6 +1624,7 @@ vehicle = {
 	--set_vehicle_gravity_amount = !#! NO MATCH FOUND !#!,
 	--get_vehicle_gravity_amount = !#! NO MATCH FOUND !#!
 }
+
 cutscene = {
 	stop_cutscene_immediately = CUTSCENE.STOP_CUTSCENE_IMMEDIATELY,
 	remove_cutscene = CUTSCENE.REMOVE_CUTSCENE,
@@ -1867,7 +1861,7 @@ is_model_an_object = function (hash)
 			not VEHICLE.IS_THIS_MODEL_A_TRAIN(hash)		and
 			not STREAMING.IS_MODEL_A_PED(hash)
 end,
-is_model_a_world_object = notif_not_imp,
+is_model_a_world_object = function(hash) return false end,
 is_model_a_ped = STREAMING.IS_MODEL_A_PED,
 remove_anim_dict = STREAMING.REMOVE_ANIM_DICT,
 remove_anim_set = STREAMING.REMOVE_ANIM_SET
