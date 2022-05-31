@@ -889,9 +889,7 @@ player = {
 	get_player_name = PLAYER.GET_PLAYER_NAME,
 	get_player_scid = players.get_rockstar_id,
 	is_player_pressing_horn = PLAYER.IS_PLAYER_PRESSING_HORN,
-	get_player_ip = function (pid)
-		return 0
-	end,
+	get_player_ip = players.get_connect_ip,
 	is_player_modder = players.is_marked_as_modder,
 	is_player_god = players.is_godmode,
 	get_player_wanted_level = PLAYER.GET_PLAYER_WANTED_LEVEL,
