@@ -1,6 +1,6 @@
 util.require_natives(1651208000)
 util.keep_running()
-local stand = menu
+stand = menu
 
 HANDLER_CONTINUE = true
 HANDLER_POP  = false
