@@ -1,11 +1,3 @@
--- 2Take1 Lua Loader 0.2
--- Allows you to load some Lua scripts made for 2Take1Menu with Stand
-
--- Implemented from https://docs.2take1.menu/features/api/#entity-functions
--- With some implementation details copied from 2Take1Menu itself as convenient
-
-
--- Prepare 2Take1 Lua Loader
 util.require_natives(1651208000)
 util.keep_running()
 local stand = menu
