@@ -1,4 +1,4 @@
-require("2take1 compat")
+local config = require("2take1 compat")
 
 local og_g_keys = {}
 for k, v in pairs(_G) do
@@ -20,8 +20,13 @@ local function init()
 		init()
 	end)
 
+	local settings_list = stand.list(stand.my_root(), "settings", {}, "")
+	stand.toggle(settings_list, "spoof 2take1 install dir", {}, "try's to redirect loaded scripts attempting to access resources from the 2take1 install directory to the \"From 2Take1Menu\" folder", function (value)
+		config.spoof_2take1_install_dir = value
+	end, true)
+
 	local lua_list = stand.list(stand.my_root(), "Load Scripts")
-	local dir = filesystem.scripts_dir() .. "From 2Take1Menu\\"
+	local dir = filesystem.stand_dir() .. "From 2Take1Menu\\scripts\\"
 	if not filesystem.is_dir(dir) then
 		filesystem.mkdir(dir)
 	end

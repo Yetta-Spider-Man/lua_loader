@@ -2,6 +2,10 @@ util.require_natives(1651208000)
 util.keep_running()
 stand = menu
 
+local config = {
+	spoof_2take1_install_dir = true
+}
+
 HANDLER_CONTINUE = true
 HANDLER_POP  = false
 
@@ -278,7 +282,7 @@ local player_feature_setters = {
 	end,
 	hidden = function (self, val)
 		for _, command in pairs(self.feats) do
-			stand.set_visible(command.id, toBool(val))
+			stand.set_visible(command.id, not not val)
 		end
 		rawset(self, "_hidden", val)
 	end,
@@ -333,7 +337,7 @@ local feature_setters = {
 		end
 	end,
 	hidden = function (self, val)
-		stand.set_visible(self.id, toBool(val))
+		stand.set_visible(self.id, not not val)
 		rawset(self, "_hidden", val)
 	end,
 	on = function (self, val)
@@ -778,6 +782,9 @@ utils = {
 	dir_exists = filesystem.is_dir,
 	make_dir = filesystem.mkdir,
 	get_appdata_path = function (dir, file)
+		if config.spoof_2take1_install_dir and dir == "PopstarDevs" and file == "2Take1Menu" then
+			return	filesystem.stand_dir() .. "From 2Take1Menu\\"
+		end
 		local file = filesystem.appdata_dir()..dir.."\\"..file
 		if filesystem.exists(file) then
 			return file
@@ -1820,7 +1827,7 @@ set_scaleform_movie_as_no_longer_needed = GRAPHICS.SET_SCALEFORM_MOVIE_AS_NO_LON
 project_3d_coord = function (coord)
 	local x_ptr, y_ptr = memory.alloc_int(), memory.alloc_int()
 	local status = GRAPHICS.GET_SCREEN_COORD_FROM_WORLD_COORD(coord.x, coord.y, coord.z, x_ptr, y_ptr)
-	local x, y = memory.read_float(x), memory.read_float(y)
+	local x, y = memory.read_float(x_ptr), memory.read_float(y_ptr)
 	memory.free(x) memory.free(y)
 	return status, v2(x, y)
 end,
@@ -2051,3 +2058,5 @@ setmetatable(gameplay, fucky_meta)
 setmetatable(streaming, fucky_meta)
 setmetatable(ai, fucky_meta)
 setmetatable(fire, fucky_meta)
+
+return config
