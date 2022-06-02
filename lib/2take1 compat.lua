@@ -350,7 +350,6 @@ local feature_setters = {
 		end
 		rawset(self, "_on", val)
 		if self.handler then
-			util.toast("test")
 			self:handler()
 		end
 	end,
@@ -400,6 +399,7 @@ local player_features = {}
 
 local feat = {
     new = function(name, parent, type)
+		local parent_ft = parents[parent]
         local ft = {
 			id=0,
 			id_toggle=nil,
@@ -425,6 +425,11 @@ local feat = {
 			pid=nil --this is not actually in the 2Take1 API but its usefull for me so i added it
 		}
         setmetatable(ft, feature_meta)
+
+		if parent_ft then
+			parent_ft.children[#parent_ft.children+1] = ft
+			parent_ft.child_count = parent_ft.child_count + 1
+		end
         return ft
     end
 }
@@ -450,9 +455,16 @@ local player_feat = {
 		}
 		setmetatable(ft.feats, feat_array_meta)
         setmetatable(ft, player_feature_meta)
+
         return ft
     end
 }
+
+local root_parent = feat.new("root", nil)
+root_parent.id = stand.my_root()
+root_parent.children = {}
+root_parent.child_count = 0
+parents[root_parent.id] = root_parent
 
 local feature_types = {
 	parent = function (name, parent, handler, pid)
@@ -464,8 +476,10 @@ local feature_types = {
 				util.yield()
 			end
 		end)
-		f.parent = parent
-		
+
+		f.children = {}
+		f.child_count = 0
+
 		parents[f.id] = f
 
 		return f
@@ -735,8 +749,8 @@ menu = {
 	delete_feature = function (id)
 		local feature = player_features[id]
 		if feature then
-			for _, value in pairs(feature.feats) do
-				stand.delete(value.id)
+			for _, feat in pairs(feature.feats) do
+				stand.delete(feat.id)
 			end
 			player_features[id] = nil
 		else

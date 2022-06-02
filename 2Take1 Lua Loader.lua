@@ -33,6 +33,7 @@ local function init()
 	dir = dir .. "scripts\\"
 	if not filesystem.is_dir(dir) then
 		filesystem.mkdir(dir)
+		
 	end
 	local created_divider = false
 	for i, path in ipairs(filesystem.list_files(dir)) do
@@ -56,9 +57,10 @@ local function init()
 						return
 					end
 				end
-				util.toast(err, TOAST_ALL)
+				util.toast(tostring(err or "no further error information"), TOAST_ALL)
 			end)
 		end
 	end
 end
 init()
+
