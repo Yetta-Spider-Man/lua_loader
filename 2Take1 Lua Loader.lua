@@ -26,7 +26,11 @@ local function init()
 	end, true)
 
 	local lua_list = stand.list(stand.my_root(), "Load Scripts")
-	local dir = filesystem.stand_dir() .. "From 2Take1Menu\\scripts\\"
+	local dir = filesystem.stand_dir() .. "From 2Take1Menu\\"
+	if not filesystem.is_dir(dir) then
+		filesystem.mkdir(dir)
+	end
+	dir = dir .. "scripts\\"
 	if not filesystem.is_dir(dir) then
 		filesystem.mkdir(dir)
 	end
