@@ -456,19 +456,16 @@ local player_feat = {
 
 local feature_types = {
 	parent = function (name, parent, handler, pid)
-		local f = feat.new(name, stand.my_root())
+		if parent == 0 or parent == nil then parent = pid and stand.player_root(pid) or stand.my_root() end
+		local f = feat.new(name, parent)
 
-		if parent ~= nil and parent ~= 0 then
-			f.id = stand.list(parent, name, {name}, "", function ()
-				while handler(f, pid) == HANDLER_CONTINUE do
-					util.yield()
-				end
-			end)
-			f.parent = parent
-		else
-			f.id = stand.my_root()
-		end
-
+		f.id = stand.list(parent, name, {name}, "", function ()
+			while handler(f, pid) == HANDLER_CONTINUE do
+				util.yield()
+			end
+		end)
+		f.parent = parent
+		
 		parents[f.id] = f
 
 		return f
