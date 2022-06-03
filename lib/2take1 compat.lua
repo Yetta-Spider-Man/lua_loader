@@ -1214,7 +1214,6 @@ detach_entity = ENTITY.DETACH_ENTITY,
 get_entity_model_hash = ENTITY.GET_ENTITY_MODEL,
 get_entity_heading = ENTITY.GET_ENTITY_HEADING,
 attach_entity_to_entity = function (subject,  target,  boneIndex,  offset,  rot,  softPinning,  collision,  isPed,  vertexIndex,  fixedRot)
-	util.toast(subject)
 	ENTITY.ATTACH_ENTITY_TO_ENTITY(subject, target, boneIndex, offset.x, offset.y, offset.z, rot.x, rot.y, rot.z, false,  softPinning, collision, isPed, vertexIndex, fixedRot)
 	return true
 end,
