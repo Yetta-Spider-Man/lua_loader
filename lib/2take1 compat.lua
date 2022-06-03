@@ -1214,7 +1214,9 @@ detach_entity = ENTITY.DETACH_ENTITY,
 get_entity_model_hash = ENTITY.GET_ENTITY_MODEL,
 get_entity_heading = ENTITY.GET_ENTITY_HEADING,
 attach_entity_to_entity = function (subject,  target,  boneIndex,  offset,  rot,  softPinning,  collision,  isPed,  vertexIndex,  fixedRot)
-	ENTITY.ATTACH_ENTITY_TO_ENTITY(subject, target, boneIndex, offset.x, offset.y, offset.z, rot.x, rot.y, rot.z, softPinning, collision, isPed, vertexIndex, fixedRot)
+	util.toast(subject)
+	ENTITY.ATTACH_ENTITY_TO_ENTITY(subject, target, boneIndex, offset.x, offset.y, offset.z, rot.x, rot.y, rot.z, false,  softPinning, collision, isPed, vertexIndex, fixedRot)
+	return true
 end,
 set_entity_as_mission_entity = ENTITY.SET_ENTITY_AS_MISSION_ENTITY,
 set_entity_collision = ENTITY.SET_ENTITY_COLLISION,
@@ -1274,7 +1276,7 @@ end,
 
 object = {
 	create_object = function (model, pos, networked, dynamic)
-		OBJECT.CREATE_OBJECT_NO_OFFSET(model, pos.x, pos.y, pos.z, networked, dynamic)
+		return OBJECT.CREATE_OBJECT_NO_OFFSET(model, pos.x, pos.y, pos.z, networked, dynamic)
 	end,
 	create_world_object = entities.create_object,
 	get_all_objects = entities.get_all_objects_as_handles,
@@ -1489,6 +1491,7 @@ vehicle = {
 	create_vehicle = function (hash, pos, heading, networked, alwaysFalse)
 		local veh = entities.create_vehicle(hash, pos, heading)
 		ENTITY._SET_ENTITY_CLEANUP_BY_ENGINE(veh, true)
+		return veh
 	end,
 	set_vehicle_doors_locked = VEHICLE.SET_VEHICLE_DOORS_LOCKED,
 	set_vehicle_neon_lights_color = function (veh, colour)
