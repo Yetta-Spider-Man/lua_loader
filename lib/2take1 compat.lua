@@ -602,10 +602,12 @@ local feature_types = {
 
 		local f = feat.new(name, parent)
 
-		f.id = stand.slider(parent, name, {name}, "", 0, 1, 0, 1, function(value)
+		f.id = stand.slider(parent, name, {name}, "", 0, 1, 0, 1, function(value, click)
 			rawset(f, "value", value)
-			while handler(f, pid) == HANDLER_CONTINUE do
-				util.yield()
+			if not (click & CLICK_FLAG_AUTO) then
+				while handler(f, pid) == HANDLER_CONTINUE do
+					util.yield()
+				end
 			end
 		end)
 
@@ -616,10 +618,12 @@ local feature_types = {
 
 		local f = feat.new(name, parent)
 
-		f.id = stand.slider_float(parent, name, {name}, "", 0, 1, 0, 100, function (value)
+		f.id = stand.slider_float(parent, name, {name}, "", 0, 1, 0, 100, function (value, click)
 			rawset(f, "value", value)
-			while handler(f, pid) == HANDLER_CONTINUE do
-				util.yield()
+			if not (click & CLICK_FLAG_AUTO) then
+				while handler(f, pid) == HANDLER_CONTINUE do
+					util.yield()
+				end
 			end
 		end)
 		f.is_float = true
