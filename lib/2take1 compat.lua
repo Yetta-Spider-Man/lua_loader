@@ -594,7 +594,7 @@ local feature_types = {
 		end)
 
 		f.id =  stand.list_select(parent, name.." type", {name.."type"}, "", {{"N/A"}}, 1, function (index)
-			rawset(f, "_value", index - 1)
+			rawset(f, "_value", index)
 		end)
 
 	 	return f
@@ -651,7 +651,7 @@ local feature_types = {
 		local f = feat.new(name, parent)
 
 		f.id =  stand.list_select(parent, name, {name}, "", {{"N/A"}}, 1, function (index)
-			rawset(f, "_value", index - 1)
+			rawset(f, "_value", index)
 			while handler(f, pid) == HANDLER_CONTINUE do
 				util.yield()
 			end
@@ -707,8 +707,8 @@ local feature_types = {
 
 		local f = feat.new(name, parent)
 
-		f.id =  stand.action_slider(parent, name, {name}, "", {}, function (index)
-			rawset(f, "_value", index - 1)
+		f.id =  stand.list_select(parent, name, {name}, "", {{"N/A"}}, 1, function (index)
+			rawset(f, "_value", index)
 			while handler(f, pid) == HANDLER_CONTINUE do
 				util.yield()
 			end
