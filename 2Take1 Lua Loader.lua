@@ -25,7 +25,12 @@ local function init()
 		config.spoof_2take1_install_dir = value
 	end, true)
 
-	local lua_list = stand.list(stand.my_root(), "Load Scripts")
+	local no_scripts = true
+	local lua_list = stand.list(stand.my_root(), "Load Scripts", {}, "", function()
+		if no_scripts then
+			util.toast("Put luas made for 2Take1Menu into the %appdata%\\Stand\\From 2Take1Menu\\scripts folder, then hit \"Reset State\" to refresh.")
+		end
+	end)
 	local dir = filesystem.stand_dir() .. "From 2Take1Menu\\"
 	if not filesystem.is_dir(dir) then
 		filesystem.mkdir(dir)
