@@ -20,8 +20,8 @@ local function init()
 		init()
 	end)
 
-	local settings_list = stand.list(stand.my_root(), "settings", {}, "")
-	stand.toggle(settings_list, "spoof 2take1 install dir", {}, "try's to redirect loaded scripts attempting to access resources from the 2take1 install directory to the \"From 2Take1Menu\" folder", function (value)
+	local settings_list = stand.list(stand.my_root(), "Settings", {}, "")
+	stand.toggle(settings_list, "Spoof 2Take1Menu Directory", {}, "Tries to redirect access to resources from the 2Take1Menu directory to the \"From 2Take1Menu\" folder.", function (value)
 		config.spoof_2take1_install_dir = value
 	end, true)
 
