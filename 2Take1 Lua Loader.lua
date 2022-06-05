@@ -45,6 +45,13 @@ local function init()
 			no_scripts = false
 			path = string.sub(path, string.len(dir) + 1)
 			stand.action(lua_list, path, {}, "", function()
+				local og_toast = util.toast
+				local silent_start = true
+				util.toast = function(...)
+					silent_start = false
+					return og_toast(...)
+				end
+
 				local chunk, err = loadfile(dir .. path)
 				local status
 				if chunk then
@@ -57,7 +64,9 @@ local function init()
 						util.log(debug.traceback(e, 2))
 					end)
 					if status then
-						util.toast("Successfully loaded " .. path)
+						if silent_start then
+							util.toast("Successfully loaded " .. path)
+						end
 						return
 					end
 				end
