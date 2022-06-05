@@ -397,6 +397,16 @@ local feature_meta = {
 
 local player_features = {}
 
+local function strDataToListActionOptions(str_data)
+	local data = {}
+	local i = 0
+	for _, v in ipairs(str_data) do
+		data[i] = { v }
+		i += 1
+	end
+	return data
+end
+
 local feat = {
     new = function(name, parent, type)
 		local parent_ft = parents[parent]
@@ -412,14 +422,15 @@ local feat = {
 			_max=1,
 			_value=0,
 			_hidden=false,
-			set_str_data = function (self, data)
+			set_str_data = function (self, str_data)
+				local data = strDataToListActionOptions(str_data)
 				local feat = player_features[self.id]
 				if feat then
 					for _, command in ipairs(feat) do
-						stand.set_action_slider_options(command, data)
+						stand.set_list_action_options(command, data)
 					end
 				else
-					stand.set_action_slider_options(self.id, data)
+					stand.set_list_action_options(self.id, data)
 				end
 			end,
 			pid=nil --this is not actually in the 2Take1 API but its usefull for me so i added it
@@ -449,7 +460,7 @@ local player_feat = {
 			_str_data={},
 			set_str_data = function (self, data)
 				for _, command in pairs(self.feats) do
-					stand.set_action_slider_options(command.id, data)
+					stand.set_list_action_options(command.id, strDataToListActionOptions(data))
 				end
 			end
 		}
@@ -573,7 +584,7 @@ local feature_types = {
 
 		local f = feat.new(name, parent)
 
-		f.id =  stand.action_slider(parent, name, {name}, "", {}, function (index)
+		f.id =  stand.list_select(parent, name, {name}, "", {{"N/A"}}, 1, function (index)
 			rawset(f, "_value", index - 1)
 		end)
 
@@ -633,7 +644,7 @@ local feature_types = {
 
 		local f = feat.new(name, parent)
 
-		f.id =  stand.action_slider(parent, name, {name}, "", {}, function (index)
+		f.id =  stand.list_select(parent, name, {name}, "", {{"N/A"}}, 1, function (index)
 			rawset(f, "_value", index - 1)
 			while handler(f, pid) == HANDLER_CONTINUE do
 				util.yield()
