@@ -308,9 +308,11 @@ local player_feature_setters = {
 
 local feature_setters = {
 	name = 	function (self, val)
-		stand.set_menu_name(self.id, val)
 		if self.id_toggle then
-			stand.set_menu_name(self.id_toggle, "toggle "..tostring(val))
+			stand.set_menu_name(self.id_toggle, val)
+			stand.set_menu_name(self.id, val.." type")
+		else
+			stand.set_menu_name(self.id, val)
 		end
         rawset(self, "_name", val)
 	end,
@@ -529,15 +531,15 @@ local feature_types = {
 
 		local f = feat.new(name, parent)
 
-		f.id = stand.slider(parent, name, {name}, "", 0, 1, 0, 1, function(value)
-			rawset(f, "_value", value - 1)
-		end)
-
-		f.id_toggle = stand.toggle(parent, "toggle "..name, {"toggle"..name}, "enable "..name, function (value)
+		f.id_toggle = stand.toggle(parent, name, {name}, "", function (value)
 			rawset(f, "on", value)
 			while handler(f, pid) == HANDLER_CONTINUE do
 				util.yield()
 			end
+		end)
+
+		f.id = stand.slider(parent, name.." value", {name.."value"}, "", 0, 1, 0, 1, function(value)
+			rawset(f, "_value", value - 1)
 		end)
 
 		return f
@@ -547,15 +549,15 @@ local feature_types = {
 
 		local f = feat.new(name, parent)
 
-		f.id = stand.slider_float(parent, name, {name}, "", 0, 1, 0, 100, function(value)
-			rawset(f, "_value", value - 1)
-		end)
-
-		f.id_toggle = stand.toggle(parent, "toggle "..name, {"toggle"..name}, "enable "..name, function (value)
+		f.id_toggle = stand.toggle(parent, name, {name}, "", function (value)
 			rawset(f, "on", value)
 			while handler(f, pid) == HANDLER_CONTINUE do
 				util.yield()
 			end
+		end)
+
+		f.id = stand.slider_float(parent, name.." value", {name.."value"}, "", 0, 1, 0, 100, function(value)
+			rawset(f, "_value", value - 1)
 		end)
 		f.is_float = true
 
@@ -566,15 +568,15 @@ local feature_types = {
 
 		local f = feat.new(name, parent)
 
-		f.id = stand.slider(parent, name, {name}, "", 0, 1, 0, 1, function(value)
-			rawset(f, "_value", value - 1)
-		end)
-
-		f.id_toggle = stand.toggle(parent, "toggle "..name, {"toggle"..name}, "enable "..name, function (value)
+		f.id_toggle = stand.toggle(parent, name, {name}, "", function (value)
 			rawset(f, "on", value)
 			while handler(f, pid) == HANDLER_CONTINUE do
 				util.yield()
 			end
+		end)
+
+		f.id = stand.slider(parent, name.." value", {name.."value"}, "", 0, 1, 0, 1, function(value)
+			rawset(f, "_value", value - 1)
 		end)
 
 		return f
@@ -584,15 +586,15 @@ local feature_types = {
 
 		local f = feat.new(name, parent)
 
-		f.id =  stand.list_select(parent, name, {name}, "", {{"N/A"}}, 1, function (index)
-			rawset(f, "_value", index - 1)
-		end)
-
-		f.id_toggle = stand.toggle(parent, "toggle "..name, {"toggle"..name}, "enable "..name, function (value)
+		f.id_toggle = stand.toggle(parent, name, {name}, "", function (value)
 			rawset(f, "on", value)
 			while handler(f, pid) == HANDLER_CONTINUE do
 				util.yield()
 			end
+		end)
+
+		f.id =  stand.list_select(parent, name.." type", {name.."type"}, "", {{"N/A"}}, 1, function (index)
+			rawset(f, "_value", index - 1)
 		end)
 
 	 	return f
