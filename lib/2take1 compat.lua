@@ -593,7 +593,7 @@ local feature_types = {
 			end
 		end)
 
-		f.id =  stand.list_select(parent, name.." type", {name.."type"}, "", {{"N/A"}}, 1, function (index)
+		f.id =  stand.list_select(parent, name.." type", {name.."type"}, "", {[0] = {"N/A"}}, 0, function (index)
 			rawset(f, "_value", index)
 		end)
 
@@ -650,7 +650,7 @@ local feature_types = {
 
 		local f = feat.new(name, parent)
 
-		f.id =  stand.list_select(parent, name, {name}, "", {{"N/A"}}, 1, function (index)
+		f.id =  stand.list_select(parent, name, {name}, "", {[0] = {"N/A"}}, 0, function (index)
 			rawset(f, "_value", index)
 			while handler(f, pid) == HANDLER_CONTINUE do
 				util.yield()
@@ -707,7 +707,7 @@ local feature_types = {
 
 		local f = feat.new(name, parent)
 
-		f.id =  stand.list_select(parent, name, {name}, "", {{"N/A"}}, 1, function (index)
+		f.id =  stand.list_select(parent, name, {name}, "", {[0] = {"N/A"}}, 0, function (index)
 			rawset(f, "_value", index)
 			while handler(f, pid) == HANDLER_CONTINUE do
 				util.yield()
