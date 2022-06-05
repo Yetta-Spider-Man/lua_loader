@@ -821,9 +821,7 @@ utils = {
 			return file
 		end
 	end,
-	from_clipboard = function ()
-		return ""
-	end,
+	from_clipboard = util.get_clipboard_text,
 	to_clipboard = util.copy_to_clipboard,
 	time = util.current_unix_time_seconds,
 	time_ms = util.current_time_millis,
