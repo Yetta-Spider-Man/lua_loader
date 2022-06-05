@@ -38,7 +38,6 @@ local function init()
 	dir = dir .. "scripts\\"
 	if not filesystem.is_dir(dir) then
 		filesystem.mkdir(dir)
-		
 	end
 	local created_divider = false
 	for i, path in ipairs(filesystem.list_files(dir)) do
@@ -68,4 +67,3 @@ local function init()
 	end
 end
 init()
-
