@@ -383,6 +383,8 @@ local feat_array_meta = {
 
 local parents = {}
 
+local features = {}
+
 local feature_meta = {
     __index=function(self, index)
         return rawget(self, "_"..index)
@@ -724,6 +726,7 @@ menu = {
 		if feature_type == nil then util.toast(type.." not found") return end
 		local feature = feature_type(name, parent, handler or function() end)
 		feature.type = feature_type_ids.regular[type]
+		features[feature.id] = feature
 		return feature
 	end,
 	add_player_feature = function (name, type, parent, handler)
@@ -753,6 +756,7 @@ menu = {
 		new_player_feat.id = util.joaat(name..type)
 		player_features[new_player_feat.id] = new_player_feat
 		new_player_feat.type = feature_type_ids.player[type]
+		features[new_player_feat.id] = new_player_feat
 		return new_player_feat
 	end,
 	notify = function (message, title, _, _)
