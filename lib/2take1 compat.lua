@@ -764,14 +764,15 @@ menu = {
 		return player_features[id]
 	end,
 	delete_feature = function (id)
-		local feature = player_features[id]
-		if feature then
-			for _, feat in pairs(feature.feats) do
-				stand.delete(feat.id)
+		stand.delete(id)
+	end,
+	delete_player_feature = function (id)
+		local p_feature = player_features[id]
+		if p_feature then
+			for _, feature in pairs(p_feature.feats) do
+				stand.delete(feature.id)
 			end
 			player_features[id] = nil
-		else
-			stand.delete(id)
 		end
 	end,
 	create_thread = util.create_thread,
