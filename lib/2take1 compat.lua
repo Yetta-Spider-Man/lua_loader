@@ -768,12 +768,17 @@ menu = {
 		return player_features[id]
 	end,
 	delete_feature = function (id)
+		local feature = features[id]
+		if feature then
+			feature.parent.children[feature.id] = nil
+		end
 		stand.delete(id)
 	end,
 	delete_player_feature = function (id)
 		local p_feature = player_features[id]
 		if p_feature then
 			for _, feature in pairs(p_feature.feats) do
+				feature.parent.children[feature.id] = nil
 				stand.delete(feature.id)
 			end
 			player_features[id] = nil
