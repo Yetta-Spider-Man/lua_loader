@@ -2104,6 +2104,7 @@ setmetatable(graphics, fucky_meta)
 setmetatable(gameplay, fucky_meta)
 setmetatable(streaming, fucky_meta)
 setmetatable(ai, fucky_meta)
+setmetatable(cam, fucky_meta)
 setmetatable(fire, fucky_meta)
 
 return config
