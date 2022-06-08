@@ -1871,7 +1871,7 @@ graphics = {
 	end,
 	}
 
-	cam = {
+cam = {
 		get_gameplay_cam_rot = function() 
 			return CAM.GET_FINAL_RENDERED_CAM_COORD(2)
 		end,
@@ -1933,7 +1933,7 @@ graphics = {
 		end
 	}
 
-	streaming = {
+streaming = {
 	request_model = STREAMING.REQUEST_MODEL,
 	has_model_loaded = STREAMING.HAS_MODEL_LOADED,
 	set_model_as_no_longer_needed = STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED,
