@@ -383,7 +383,7 @@ local feat_array_meta = {
 
 local parents = {}
 
-local features = {}
+local existing_features = {}
 
 local feature_meta = {
     __index=function(self, index)
@@ -401,16 +401,6 @@ local feature_meta = {
 
 local player_features = {}
 
-local function strDataToListActionOptions(str_data)
-	local data = {}
-	local i = 0
-	for _, v in ipairs(str_data) do
-		data[i] = { v }
-		i += 1
-	end
-	return data
-end
-
 local feat = {
     new = function(name, parent, type)
 		local parent_ft = parents[parent]
@@ -426,15 +416,14 @@ local feat = {
 			_max=1,
 			_value=0,
 			_hidden=false,
-			set_str_data = function (self, str_data)
-				local data = strDataToListActionOptions(str_data)
+			set_str_data = function (self, data)
 				local feat = player_features[self.id]
 				if feat then
 					for _, command in ipairs(feat) do
-						stand.set_list_action_options(command, data)
+						stand.set_action_slider_options(command, data)
 					end
 				else
-					stand.set_list_action_options(self.id, data)
+					stand.set_action_slider_options(self.id, data)
 				end
 			end,
 			pid=nil --this is not actually in the 2Take1 API but its usefull for me so i added it
@@ -464,7 +453,7 @@ local player_feat = {
 			_str_data={},
 			set_str_data = function (self, data)
 				for _, command in pairs(self.feats) do
-					stand.set_list_action_options(command.id, strDataToListActionOptions(data))
+					stand.set_action_slider_options(command.id, data)
 				end
 			end
 		}
@@ -595,8 +584,8 @@ local feature_types = {
 			end
 		end)
 
-		f.id =  stand.list_select(parent, name.." type", {name.."type"}, "", {[0] = {"N/A"}}, 0, function (index)
-			rawset(f, "_value", index)
+		f.id =  stand.slider_text(parent, name.." type", {name.."type"}, "", {}, function (index)
+			rawset(f, "_value", index - 1)
 		end)
 
 	 	return f
@@ -652,8 +641,8 @@ local feature_types = {
 
 		local f = feat.new(name, parent)
 
-		f.id =  stand.list_select(parent, name, {name}, "", {[0] = {"N/A"}}, 0, function (index)
-			rawset(f, "_value", index)
+		f.id =  stand.slider_text(parent, name, {name}, "", {}, function (index)
+			rawset(f, "_value", index - 1)
 			while handler(f, pid) == HANDLER_CONTINUE do
 				util.yield()
 			end
@@ -709,8 +698,8 @@ local feature_types = {
 
 		local f = feat.new(name, parent)
 
-		f.id =  stand.list_select(parent, name, {name}, "", {[0] = {"N/A"}}, 0, function (index)
-			rawset(f, "_value", index)
+		f.id =  stand.slider_text(parent, name, {name}, "", {}, function (index)
+			rawset(f, "_value", index - 1)
 			while handler(f, pid) == HANDLER_CONTINUE do
 				util.yield()
 			end
@@ -726,7 +715,7 @@ menu = {
 		if feature_type == nil then util.toast(type.." not found") return end
 		local feature = feature_type(name, parent, handler or function() end)
 		feature.type = feature_type_ids.regular[type]
-		features[feature.id] = feature
+		existing_features[feature.id] = feature
 		return feature
 	end,
 	add_player_feature = function (name, type, parent, handler)
@@ -756,7 +745,7 @@ menu = {
 		new_player_feat.id = util.joaat(name..type)
 		player_features[new_player_feat.id] = new_player_feat
 		new_player_feat.type = feature_type_ids.player[type]
-		features[new_player_feat.id] = new_player_feat
+		existing_features[new_player_feat.id] = new_player_feat
 		return new_player_feat
 	end,
 	notify = function (message, title, _, _)
@@ -768,7 +757,7 @@ menu = {
 		return player_features[id]
 	end,
 	delete_feature = function (id)
-		local feature = features[id]
+		local feature = existing_features[id]
 		if feature then
 			feature.parent.children[feature.id] = nil
 		end
