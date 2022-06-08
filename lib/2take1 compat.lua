@@ -1208,94 +1208,94 @@ end,
 }
 
 entity = {
-get_entity_coords = ENTITY.GET_ENTITY_COORDS,
-set_entity_coords_no_offset = function (ent, pos)
-	ENTITY.SET_ENTITY_COORDS_NO_OFFSET(ent, pos.x, pos.y, pos.z)
-	return true
-end,
-get_entity_rotation = ENTITY.GET_ENTITY_ROTATION,
-set_entity_rotation = function (ent, rot)
-	ENTITY.SET_ENTITY_ROTATION(ent, rot.x, rot.y, rot.z, 2, true)
-end,
-set_entity_heading = ENTITY.SET_ENTITY_HEADING,
-set_entity_velocity = function (ent, veh)
-	ENTITY.SET_ENTITY_VELOCITY(ent, veh.x, veh.y, veh.z)
-end,
-get_entity_velocity = ENTITY.GET_ENTITY_VELOCITY,
-is_an_entity = ENTITY.IS_AN_ENTITY,
-is_entity_a_ped = ENTITY.IS_ENTITY_A_PED,
-is_entity_a_vehicle = ENTITY.IS_ENTITY_A_VEHICLE,
-is_entity_an_object = ENTITY.IS_ENTITY_AN_OBJECT,
-is_entity_dead = ENTITY.IS_ENTITY_DEAD,
-is_entity_on_fire = FIRE.IS_ENTITY_ON_FIRE,
-is_entity_visible = ENTITY.IS_ENTITY_VISIBLE,
-is_entity_attached = ENTITY.IS_ENTITY_ATTACHED,
-set_entity_visible = ENTITY.SET_ENTITY_VISIBLE,
-get_entity_type = ENTITY.GET_ENTITY_TYPE,
-set_entity_gravity = ENTITY.SET_ENTITY_HAS_GRAVITY,
-apply_force_to_entity = ENTITY.APPLY_FORCE_TO_ENTITY,
-get_entity_attached_to = ENTITY.GET_ENTITY_ATTACHED_TO,
-detach_entity = ENTITY.DETACH_ENTITY,
-get_entity_model_hash = ENTITY.GET_ENTITY_MODEL,
-get_entity_heading = ENTITY.GET_ENTITY_HEADING,
-attach_entity_to_entity = function (subject,  target,  boneIndex,  offset,  rot,  softPinning,  collision,  isPed,  vertexIndex,  fixedRot)
-	ENTITY.ATTACH_ENTITY_TO_ENTITY(subject, target, boneIndex, offset.x, offset.y, offset.z, rot.x, rot.y, rot.z, false,  softPinning, collision, isPed, vertexIndex, fixedRot)
-	return true
-end,
-set_entity_as_mission_entity = ENTITY.SET_ENTITY_AS_MISSION_ENTITY,
-set_entity_collision = ENTITY.SET_ENTITY_COLLISION,
-is_entity_in_air = ENTITY.IS_ENTITY_IN_AIR,
-set_entity_as_no_longer_needed = function (ent)
-	local ent_ptr = memory.alloc_int()
-	memory.write_int(ent_ptr, ent)
-	ENTITY.SET_ENTITY_AS_NO_LONGER_NEEDED(ent_ptr)
-	memory.free(ent_ptr)
-end,
-set_entity_no_collsion_entity = ENTITY.SET_ENTITY_NO_COLLISION_ENTITY,
-freeze_entity = ENTITY.FREEZE_ENTITY_POSITION,
-get_entity_offset_from_coords = ENTITY.GET_OFFSET_FROM_ENTITY_GIVEN_WORLD_COORDS,
-get_entity_offset_from_entity = ENTITY.GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS,
-set_entity_alpha = ENTITY.SET_ENTITY_ALPHA,
-reset_entity_alpha = ENTITY.RESET_ENTITY_ALPHA,
-delete_entity = entities.delete_by_handle,
-set_entity_god_mode = ENTITY.SET_ENTITY_INVINCIBLE,
-get_entity_god_mode = function(ent) return not ENTITY._GET_ENTITY_CAN_BE_DAMAGED(ent) end,
-is_entity_in_water = ENTITY.IS_ENTITY_IN_WATER,
-get_entity_speed = ENTITY.GET_ENTITY_SPEED,
-set_entity_lights = ENTITY.SET_ENTITY_LIGHTS,
-set_entity_max_speed = ENTITY.SET_ENTITY_MAX_SPEED,
-get_entity_pitch = ENTITY.GET_ENTITY_PITCH,
-get_entity_roll = ENTITY.GET_ENTITY_ROLL,
---get_entity_physics_rotation = !#! NO MATCH FOUND !#!,
-get_entity_physics_heading = ENTITY._GET_ENTITY_PHYSICS_HEADING,
---get_entity_physics_pitch = !#! NO MATCH FOUND !#!,
---get_entity_physics_roll = !#! NO MATCH FOUND !#!,
-does_entity_have_physics = ENTITY.DOES_ENTITY_HAVE_PHYSICS,
-get_entity_rotation_velocity = ENTITY.GET_ENTITY_ROTATION_VELOCITY,
-get_entity_submerged_level = ENTITY.GET_ENTITY_SUBMERGED_LEVEL,
-get_entity_population_type = ENTITY.GET_ENTITY_POPULATION_TYPE,
-is_entity_static = ENTITY.IS_ENTITY_STATIC,
-is_entity_in_zone = ENTITY.IS_ENTITY_IN_ZONE,
-is_entity_upright = ENTITY.IS_ENTITY_UPRIGHT,
-is_entity_upside_down = ENTITY.IS_ENTITY_UPSIDEDOWN,
-has_entity_been_damaged_by_any_object = ENTITY.HAS_ENTITY_BEEN_DAMAGED_BY_ANY_OBJECT,
-has_entity_been_damaged_by_any_vehicle = ENTITY.HAS_ENTITY_BEEN_DAMAGED_BY_ANY_VEHICLE,
-has_entity_been_damaged_by_any_ped = ENTITY.HAS_ENTITY_BEEN_DAMAGED_BY_ANY_PED,
-has_entity_been_damaged_by_entity = ENTITY.HAS_ENTITY_BEEN_DAMAGED_BY_ENTITY,
-does_entity_have_drawable = ENTITY.DOES_ENTITY_HAVE_DRAWABLE,
-has_entity_collided_with_anything = ENTITY.HAS_ENTITY_COLLIDED_WITH_ANYTHING,
---get_entity_entity_has_collided_with = !#! NO MATCH FOUND !#!,
-get_entity_bone_index_by_name = ENTITY.GET_ENTITY_BONE_INDEX_BY_NAME,
-get_entity_forward_vector = ENTITY.GET_ENTITY_FORWARD_VECTOR,
-get_entity_model_dimensions = function (hash)
-	local minimum = vec3.new()
-    local maximum = vec3.new()
-	MISC.GET_MODEL_DIMENSIONS(hash, minimum, maximum)
-	local maximum_vec = {x = vec3.getX(maximum), y = vec3.getY(maximum), z = vec3.getZ(maximum)}
-	local minimum_vec = {x = vec3.getX(minimum), y = vec3.getY(minimum), z = vec3.getZ(minimum)}
-	vec3.free(minimum) vec3.free(maximum)
-	return minimum_vec, maximum_vec
-end,
+	get_entity_coords = ENTITY.GET_ENTITY_COORDS,
+	set_entity_coords_no_offset = function (ent, pos)
+		ENTITY.SET_ENTITY_COORDS_NO_OFFSET(ent, pos.x, pos.y, pos.z)
+		return true
+	end,
+	get_entity_rotation = ENTITY.GET_ENTITY_ROTATION,
+	set_entity_rotation = function (ent, rot)
+		ENTITY.SET_ENTITY_ROTATION(ent, rot.x, rot.y, rot.z, 2, true)
+	end,
+	set_entity_heading = ENTITY.SET_ENTITY_HEADING,
+	set_entity_velocity = function (ent, veh)
+		ENTITY.SET_ENTITY_VELOCITY(ent, veh.x, veh.y, veh.z)
+	end,
+	get_entity_velocity = ENTITY.GET_ENTITY_VELOCITY,
+	is_an_entity = ENTITY.IS_AN_ENTITY,
+	is_entity_a_ped = ENTITY.IS_ENTITY_A_PED,
+	is_entity_a_vehicle = ENTITY.IS_ENTITY_A_VEHICLE,
+	is_entity_an_object = ENTITY.IS_ENTITY_AN_OBJECT,
+	is_entity_dead = ENTITY.IS_ENTITY_DEAD,
+	is_entity_on_fire = FIRE.IS_ENTITY_ON_FIRE,
+	is_entity_visible = ENTITY.IS_ENTITY_VISIBLE,
+	is_entity_attached = ENTITY.IS_ENTITY_ATTACHED,
+	set_entity_visible = ENTITY.SET_ENTITY_VISIBLE,
+	get_entity_type = ENTITY.GET_ENTITY_TYPE,
+	set_entity_gravity = ENTITY.SET_ENTITY_HAS_GRAVITY,
+	apply_force_to_entity = ENTITY.APPLY_FORCE_TO_ENTITY,
+	get_entity_attached_to = ENTITY.GET_ENTITY_ATTACHED_TO,
+	detach_entity = ENTITY.DETACH_ENTITY,
+	get_entity_model_hash = ENTITY.GET_ENTITY_MODEL,
+	get_entity_heading = ENTITY.GET_ENTITY_HEADING,
+	attach_entity_to_entity = function (subject,  target,  boneIndex,  offset,  rot,  softPinning,  collision,  isPed,  vertexIndex,  fixedRot)
+		ENTITY.ATTACH_ENTITY_TO_ENTITY(subject, target, boneIndex, offset.x, offset.y, offset.z, rot.x, rot.y, rot.z, false,  softPinning, collision, isPed, vertexIndex, fixedRot)
+		return true
+	end,
+	set_entity_as_mission_entity = ENTITY.SET_ENTITY_AS_MISSION_ENTITY,
+	set_entity_collision = ENTITY.SET_ENTITY_COLLISION,
+	is_entity_in_air = ENTITY.IS_ENTITY_IN_AIR,
+	set_entity_as_no_longer_needed = function (ent)
+		local ent_ptr = memory.alloc_int()
+		memory.write_int(ent_ptr, ent)
+		ENTITY.SET_ENTITY_AS_NO_LONGER_NEEDED(ent_ptr)
+		memory.free(ent_ptr)
+	end,
+	set_entity_no_collsion_entity = ENTITY.SET_ENTITY_NO_COLLISION_ENTITY,
+	freeze_entity = ENTITY.FREEZE_ENTITY_POSITION,
+	get_entity_offset_from_coords = ENTITY.GET_OFFSET_FROM_ENTITY_GIVEN_WORLD_COORDS,
+	get_entity_offset_from_entity = ENTITY.GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS,
+	set_entity_alpha = ENTITY.SET_ENTITY_ALPHA,
+	reset_entity_alpha = ENTITY.RESET_ENTITY_ALPHA,
+	delete_entity = entities.delete_by_handle,
+	set_entity_god_mode = ENTITY.SET_ENTITY_INVINCIBLE,
+	get_entity_god_mode = function(ent) return not ENTITY._GET_ENTITY_CAN_BE_DAMAGED(ent) end,
+	is_entity_in_water = ENTITY.IS_ENTITY_IN_WATER,
+	get_entity_speed = ENTITY.GET_ENTITY_SPEED,
+	set_entity_lights = ENTITY.SET_ENTITY_LIGHTS,
+	set_entity_max_speed = ENTITY.SET_ENTITY_MAX_SPEED,
+	get_entity_pitch = ENTITY.GET_ENTITY_PITCH,
+	get_entity_roll = ENTITY.GET_ENTITY_ROLL,
+	--get_entity_physics_rotation = !#! NO MATCH FOUND !#!,
+	get_entity_physics_heading = ENTITY._GET_ENTITY_PHYSICS_HEADING,
+	--get_entity_physics_pitch = !#! NO MATCH FOUND !#!,
+	--get_entity_physics_roll = !#! NO MATCH FOUND !#!,
+	does_entity_have_physics = ENTITY.DOES_ENTITY_HAVE_PHYSICS,
+	get_entity_rotation_velocity = ENTITY.GET_ENTITY_ROTATION_VELOCITY,
+	get_entity_submerged_level = ENTITY.GET_ENTITY_SUBMERGED_LEVEL,
+	get_entity_population_type = ENTITY.GET_ENTITY_POPULATION_TYPE,
+	is_entity_static = ENTITY.IS_ENTITY_STATIC,
+	is_entity_in_zone = ENTITY.IS_ENTITY_IN_ZONE,
+	is_entity_upright = ENTITY.IS_ENTITY_UPRIGHT,
+	is_entity_upside_down = ENTITY.IS_ENTITY_UPSIDEDOWN,
+	has_entity_been_damaged_by_any_object = ENTITY.HAS_ENTITY_BEEN_DAMAGED_BY_ANY_OBJECT,
+	has_entity_been_damaged_by_any_vehicle = ENTITY.HAS_ENTITY_BEEN_DAMAGED_BY_ANY_VEHICLE,
+	has_entity_been_damaged_by_any_ped = ENTITY.HAS_ENTITY_BEEN_DAMAGED_BY_ANY_PED,
+	has_entity_been_damaged_by_entity = ENTITY.HAS_ENTITY_BEEN_DAMAGED_BY_ENTITY,
+	does_entity_have_drawable = ENTITY.DOES_ENTITY_HAVE_DRAWABLE,
+	has_entity_collided_with_anything = ENTITY.HAS_ENTITY_COLLIDED_WITH_ANYTHING,
+	--get_entity_entity_has_collided_with = !#! NO MATCH FOUND !#!,
+	get_entity_bone_index_by_name = ENTITY.GET_ENTITY_BONE_INDEX_BY_NAME,
+	get_entity_forward_vector = ENTITY.GET_ENTITY_FORWARD_VECTOR,
+	get_entity_model_dimensions = function (hash)
+		local minimum = vec3.new()
+		local maximum = vec3.new()
+		MISC.GET_MODEL_DIMENSIONS(hash, minimum, maximum)
+		local maximum_vec = {x = vec3.getX(maximum), y = vec3.getY(maximum), z = vec3.getZ(maximum)}
+		local minimum_vec = {x = vec3.getX(minimum), y = vec3.getY(minimum), z = vec3.getZ(minimum)}
+		vec3.free(minimum) vec3.free(maximum)
+		return minimum_vec, maximum_vec
+	end
 }
 
 object = {
@@ -1788,176 +1788,176 @@ event = {
 }
 
 graphics = {
-get_screen_height = function ()
-	local _, y = directx.get_client_size()
-	return y
-end,
-get_screen_width = directx.get_client_size,
-request_named_ptfx_asset = STREAMING.REQUEST_NAMED_PTFX_ASSET,
-has_named_ptfx_asset_loaded = STREAMING.HAS_NAMED_PTFX_ASSET_LOADED,
-remove_named_ptfx_asset = STREAMING.REMOVE_NAMED_PTFX_ASSET,
-set_next_ptfx_asset = GRAPHICS.USE_PARTICLE_FX_ASSET,
-set_next_ptfx_asset_by_hash = util.use_particle_fx_asset,
-start_ptfx_looped_on_entity = function (name, ent, offset, rot, scale)
-	GRAPHICS.START_PARTICLE_FX_LOOPED_ON_ENTITY(name, ent, offset.x, offset.y, offset.z, rot.x, rot.y, rot.z, scale)
-end,
-start_ptfx_non_looped_on_entity = function (name, ent, offset, rot, scale)
-	GRAPHICS.START_PARTICLE_FX_NON_LOOPED_ON_ENTITY(name, ent, offset.x, offset.y, offset.z, rot.x, rot.y, rot.z, scale)
-end,
-start_networked_ptfx_looped_on_entity = function (name, ent, offset, rot, scale)
-	GRAPHICS.START_NETWORKED_PARTICLE_FX_LOOPED_ON_ENTITY(name, ent, offset.x, offset.y, offset.z, rot.x, rot.y, rot.z, scale)
-end,
-start_networked_ptfx_non_looped_on_entity = function (name, ent, offset, rot, scale)
-	GRAPHICS.START_NETWORKED_PARTICLE_FX_NON_LOOPED_ON_ENTITY(name, ent, offset.x, offset.y, offset.z, rot.x, rot.y, rot.z, scale)
-end,
-remove_ptfx_from_entity = GRAPHICS.REMOVE_PARTICLE_FX_FROM_ENTITY,
-does_looped_ptfx_exist = GRAPHICS.DOES_PARTICLE_FX_LOOPED_EXIST,
-start_ptfx_looped_at_coord = function (name, pos, rot, scale, xAxis, yAxis, zAxis)
-	GRAPHICS.START_PARTICLE_FX_LOOPED_AT_COORD(name, pos.x, pos.y, pos.z, rot.x, rot.y, rot.z, scale, xAxis, yAxis, zAxis)
-end,
-start_ptfx_non_looped_at_coord = function (name, pos, rot, scale, xAxis, yAxis, zAxis)
-	GRAPHICS.START_PARTICLE_FX_NON_LOOPED_AT_COORD(name, pos.x, pos.y, pos.z, rot.x, rot.y, rot.z, scale, xAxis, yAxis, zAxis)
-end,
-start_networked_ptfx_non_looped_at_coord = function (name, pos, rot, scale, xAxis, yAxis, zAxis)
-	GRAPHICS.START_NETWORKED_PARTICLE_FX_NON_LOOPED_AT_COORD(name, pos.x, pos.y, pos.z, rot.x, rot.y, rot.z, scale, xAxis, yAxis, zAxis)
-end,
-start_networked_ptfx_looped_at_coord = notif_not_imp,
-remove_particle_fx = GRAPHICS.REMOVE_PARTICLE_FX,
-remove_ptfx_in_range = function (pos, range)
-	GRAPHICS.REMOVE_PARTICLE_FX_IN_RANGE(pos.x, pos.y, pos.z, range)
-end,
-set_ptfx_looped_offsets = function (ptfx, pos, rot)
-	GRAPHICS.SET_PARTICLE_FX_LOOPED_OFFSETS(ptfx, pos.x, pos.y, pos.z, rot.x, rot.y, rot.z)
-end,
-set_ptfx_looped_evolution = GRAPHICS.SET_PARTICLE_FX_LOOPED_EVOLUTION,
-set_ptfx_looped_color = GRAPHICS.SET_PARTICLE_FX_LOOPED_COLOUR,
-set_ptfx_looped_alpha = GRAPHICS.SET_PARTICLE_FX_LOOPED_ALPHA,
-set_ptfx_looped_scale = GRAPHICS.SET_PARTICLE_FX_LOOPED_SCALE,
-set_ptfx_looped_far_clip_dist = GRAPHICS.SET_PARTICLE_FX_LOOPED_FAR_CLIP_DIST,
-enable_clown_blood_vfx = GRAPHICS.ENABLE_CLOWN_BLOOD_VFX,
-enable_alien_blood_vfx = GRAPHICS.ENABLE_ALIEN_BLOOD_VFX,
-animpostfx_play = GRAPHICS.ANIMPOSTFX_PLAY,
-animpostfx_stop = GRAPHICS.ANIMPOSTFX_STOP,
-animpostfx_is_running = GRAPHICS.ANIMPOSTFX_IS_RUNNING,
-animpostfx_stop_all = GRAPHICS.ANIMPOSTFX_STOP_ALL,
-request_scaleform_movie = GRAPHICS.REQUEST_SCALEFORM_MOVIE,
-begin_scaleform_movie_method = GRAPHICS.BEGIN_SCALEFORM_MOVIE_METHOD,
-scaleform_movie_method_add_param_texture_name_string = GRAPHICS.SCALEFORM_MOVIE_METHOD_ADD_PARAM_TEXTURE_NAME_STRING,
-scaleform_movie_method_add_param_int = GRAPHICS.SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT,
-scaleform_movie_method_add_param_float = GRAPHICS.SCALEFORM_MOVIE_METHOD_ADD_PARAM_FLOAT,
-scaleform_movie_method_add_param_bool = GRAPHICS.SCALEFORM_MOVIE_METHOD_ADD_PARAM_BOOL,
-draw_scaleform_movie_fullscreen = GRAPHICS.DRAW_SCALEFORM_MOVIE_FULLSCREEN,
-draw_scaleform_movie = GRAPHICS.DRAW_SCALEFORM_MOVIE,
-end_scaleform_movie_method = GRAPHICS.END_SCALEFORM_MOVIE_METHOD,
-draw_marker = function (type, pos, dir, rot, scale, red, green, blue, alpha, bobUpAndDown, faceCam, a12, rotate, textureDict, textureName, drawOntEnts)
-	GRAPHICS.DRAW_MARKER(type, pos.x, pos.y, pos.z, dir.x, dir.y, dir.z, rot.x, rot.y, rot.z, scale.x, scale.y, scale.z, red, green, blue, alpha, bobUpAndDown, faceCam, a12, rotate, textureDict or 0, textureName or 0, drawOntEnts)
-end,
-create_checkpoint = function (type, thisPos, nextPos, radius, red, green, blue, alpha, reserved)
- 	return	GRAPHICS.CREATE_CHECKPOINT(type, thisPos.x, thisPos.y, thisPos.z, nextPos.x, nextPos.y, nextPos.z, radius, red, green, blue, alpha, reserved)
-end,
-set_checkpoint_icon_height = GRAPHICS._SET_CHECKPOINT_ICON_SCALE,
-set_checkpoint_cylinder_height = GRAPHICS.SET_CHECKPOINT_CYLINDER_HEIGHT,
-set_checkpoint_rgba = GRAPHICS.SET_CHECKPOINT_RGBA,
-set_checkpoint_icon_rgba = 	GRAPHICS.SET_CHECKPOINT_RGBA2,
-delete_checkpoint = GRAPHICS.DELETE_CHECKPOINT,
-has_scaleform_movie_loaded = GRAPHICS.HAS_SCALEFORM_MOVIE_LOADED,
-set_scaleform_movie_as_no_longer_needed = GRAPHICS.SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED,
-project_3d_coord = function (coord)
-	local x_ptr, y_ptr = memory.alloc_int(), memory.alloc_int()
-	local status = GRAPHICS.GET_SCREEN_COORD_FROM_WORLD_COORD(coord.x, coord.y, coord.z, x_ptr, y_ptr)
-	local x, y = memory.read_float(x_ptr), memory.read_float(y_ptr)
-	memory.free(x) memory.free(y)
-	return status, v2(x, y)
-end,
-}
+	get_screen_height = function ()
+		local _, y = directx.get_client_size()
+		return y
+	end,
+	get_screen_width = directx.get_client_size,
+	request_named_ptfx_asset = STREAMING.REQUEST_NAMED_PTFX_ASSET,
+	has_named_ptfx_asset_loaded = STREAMING.HAS_NAMED_PTFX_ASSET_LOADED,
+	remove_named_ptfx_asset = STREAMING.REMOVE_NAMED_PTFX_ASSET,
+	set_next_ptfx_asset = GRAPHICS.USE_PARTICLE_FX_ASSET,
+	set_next_ptfx_asset_by_hash = util.use_particle_fx_asset,
+	start_ptfx_looped_on_entity = function (name, ent, offset, rot, scale)
+		GRAPHICS.START_PARTICLE_FX_LOOPED_ON_ENTITY(name, ent, offset.x, offset.y, offset.z, rot.x, rot.y, rot.z, scale)
+	end,
+	start_ptfx_non_looped_on_entity = function (name, ent, offset, rot, scale)
+		GRAPHICS.START_PARTICLE_FX_NON_LOOPED_ON_ENTITY(name, ent, offset.x, offset.y, offset.z, rot.x, rot.y, rot.z, scale)
+	end,
+	start_networked_ptfx_looped_on_entity = function (name, ent, offset, rot, scale)
+		GRAPHICS.START_NETWORKED_PARTICLE_FX_LOOPED_ON_ENTITY(name, ent, offset.x, offset.y, offset.z, rot.x, rot.y, rot.z, scale)
+	end,
+	start_networked_ptfx_non_looped_on_entity = function (name, ent, offset, rot, scale)
+		GRAPHICS.START_NETWORKED_PARTICLE_FX_NON_LOOPED_ON_ENTITY(name, ent, offset.x, offset.y, offset.z, rot.x, rot.y, rot.z, scale)
+	end,
+	remove_ptfx_from_entity = GRAPHICS.REMOVE_PARTICLE_FX_FROM_ENTITY,
+	does_looped_ptfx_exist = GRAPHICS.DOES_PARTICLE_FX_LOOPED_EXIST,
+	start_ptfx_looped_at_coord = function (name, pos, rot, scale, xAxis, yAxis, zAxis)
+		GRAPHICS.START_PARTICLE_FX_LOOPED_AT_COORD(name, pos.x, pos.y, pos.z, rot.x, rot.y, rot.z, scale, xAxis, yAxis, zAxis)
+	end,
+	start_ptfx_non_looped_at_coord = function (name, pos, rot, scale, xAxis, yAxis, zAxis)
+		GRAPHICS.START_PARTICLE_FX_NON_LOOPED_AT_COORD(name, pos.x, pos.y, pos.z, rot.x, rot.y, rot.z, scale, xAxis, yAxis, zAxis)
+	end,
+	start_networked_ptfx_non_looped_at_coord = function (name, pos, rot, scale, xAxis, yAxis, zAxis)
+		GRAPHICS.START_NETWORKED_PARTICLE_FX_NON_LOOPED_AT_COORD(name, pos.x, pos.y, pos.z, rot.x, rot.y, rot.z, scale, xAxis, yAxis, zAxis)
+	end,
+	start_networked_ptfx_looped_at_coord = notif_not_imp,
+	remove_particle_fx = GRAPHICS.REMOVE_PARTICLE_FX,
+	remove_ptfx_in_range = function (pos, range)
+		GRAPHICS.REMOVE_PARTICLE_FX_IN_RANGE(pos.x, pos.y, pos.z, range)
+	end,
+	set_ptfx_looped_offsets = function (ptfx, pos, rot)
+		GRAPHICS.SET_PARTICLE_FX_LOOPED_OFFSETS(ptfx, pos.x, pos.y, pos.z, rot.x, rot.y, rot.z)
+	end,
+	set_ptfx_looped_evolution = GRAPHICS.SET_PARTICLE_FX_LOOPED_EVOLUTION,
+	set_ptfx_looped_color = GRAPHICS.SET_PARTICLE_FX_LOOPED_COLOUR,
+	set_ptfx_looped_alpha = GRAPHICS.SET_PARTICLE_FX_LOOPED_ALPHA,
+	set_ptfx_looped_scale = GRAPHICS.SET_PARTICLE_FX_LOOPED_SCALE,
+	set_ptfx_looped_far_clip_dist = GRAPHICS.SET_PARTICLE_FX_LOOPED_FAR_CLIP_DIST,
+	enable_clown_blood_vfx = GRAPHICS.ENABLE_CLOWN_BLOOD_VFX,
+	enable_alien_blood_vfx = GRAPHICS.ENABLE_ALIEN_BLOOD_VFX,
+	animpostfx_play = GRAPHICS.ANIMPOSTFX_PLAY,
+	animpostfx_stop = GRAPHICS.ANIMPOSTFX_STOP,
+	animpostfx_is_running = GRAPHICS.ANIMPOSTFX_IS_RUNNING,
+	animpostfx_stop_all = GRAPHICS.ANIMPOSTFX_STOP_ALL,
+	request_scaleform_movie = GRAPHICS.REQUEST_SCALEFORM_MOVIE,
+	begin_scaleform_movie_method = GRAPHICS.BEGIN_SCALEFORM_MOVIE_METHOD,
+	scaleform_movie_method_add_param_texture_name_string = GRAPHICS.SCALEFORM_MOVIE_METHOD_ADD_PARAM_TEXTURE_NAME_STRING,
+	scaleform_movie_method_add_param_int = GRAPHICS.SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT,
+	scaleform_movie_method_add_param_float = GRAPHICS.SCALEFORM_MOVIE_METHOD_ADD_PARAM_FLOAT,
+	scaleform_movie_method_add_param_bool = GRAPHICS.SCALEFORM_MOVIE_METHOD_ADD_PARAM_BOOL,
+	draw_scaleform_movie_fullscreen = GRAPHICS.DRAW_SCALEFORM_MOVIE_FULLSCREEN,
+	draw_scaleform_movie = GRAPHICS.DRAW_SCALEFORM_MOVIE,
+	end_scaleform_movie_method = GRAPHICS.END_SCALEFORM_MOVIE_METHOD,
+	draw_marker = function (type, pos, dir, rot, scale, red, green, blue, alpha, bobUpAndDown, faceCam, a12, rotate, textureDict, textureName, drawOntEnts)
+		GRAPHICS.DRAW_MARKER(type, pos.x, pos.y, pos.z, dir.x, dir.y, dir.z, rot.x, rot.y, rot.z, scale.x, scale.y, scale.z, red, green, blue, alpha, bobUpAndDown, faceCam, a12, rotate, textureDict or 0, textureName or 0, drawOntEnts)
+	end,
+	create_checkpoint = function (type, thisPos, nextPos, radius, red, green, blue, alpha, reserved)
+		return	GRAPHICS.CREATE_CHECKPOINT(type, thisPos.x, thisPos.y, thisPos.z, nextPos.x, nextPos.y, nextPos.z, radius, red, green, blue, alpha, reserved)
+	end,
+	set_checkpoint_icon_height = GRAPHICS._SET_CHECKPOINT_ICON_SCALE,
+	set_checkpoint_cylinder_height = GRAPHICS.SET_CHECKPOINT_CYLINDER_HEIGHT,
+	set_checkpoint_rgba = GRAPHICS.SET_CHECKPOINT_RGBA,
+	set_checkpoint_icon_rgba = 	GRAPHICS.SET_CHECKPOINT_RGBA2,
+	delete_checkpoint = GRAPHICS.DELETE_CHECKPOINT,
+	has_scaleform_movie_loaded = GRAPHICS.HAS_SCALEFORM_MOVIE_LOADED,
+	set_scaleform_movie_as_no_longer_needed = GRAPHICS.SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED,
+	project_3d_coord = function (coord)
+		local x_ptr, y_ptr = memory.alloc_int(), memory.alloc_int()
+		local status = GRAPHICS.GET_SCREEN_COORD_FROM_WORLD_COORD(coord.x, coord.y, coord.z, x_ptr, y_ptr)
+		local x, y = memory.read_float(x_ptr), memory.read_float(y_ptr)
+		memory.free(x) memory.free(y)
+		return status, v2(x, y)
+	end,
+	}
 
-gameplay = {
-	get_hash_key = util.joaat,
-	display_onscreen_keyboard = MISC.DISPLAY_ONSCREEN_KEYBOARD,
-	update_onscreen_keyboard = MISC.UPDATE_ONSCREEN_KEYBOARD,
-	get_onscreen_keyboard_result = MISC.GET_ONSCREEN_KEYBOARD_RESULT,
-	is_onscreen_keyboard_active = function ()
-		return MISC.UPDATE_ONSCREEN_KEYBOARD() ~= -1
-	end,
-	set_override_weather = MISC.SET_OVERRIDE_WEATHER,
-	clear_override_weather = MISC.CLEAR_OVERRIDE_WEATHER,
-	set_blackout = GRAPHICS.SET_ARTIFICIAL_LIGHTS_STATE,
-	set_mobile_radio = AUDIO.SET_MOBILE_RADIO_ENABLED_DURING_GAMEPLAY,
-	get_game_state = function()
-		return entities.player_info_get_game_state(entities.get_player_info(entities.handle_to_pointer(players.user_ped())))
-	end,
-	is_game_state = function(state)
-		return gameplay.get_game_state() == state
-	end,
-	clear_area_of_objects = function (vec, radius, flags)
-		MISC.CLEAR_AREA_OF_OBJECTS(vec.x, vec.y, vec.z, radius, flags)
-	end,
-	clear_area_of_vehicles = function (coord, radius, a3, a4, a5, a6, a7)
-		MISC.CLEAR_AREA_OF_VEHICLES(coord.x, coord.y, coord.z, radius, a3, a4, a5, a6, a7)
-	end,
-	clear_area_of_peds = function (vec, radius, flags)
-		MISC.CLEAR_AREA_OF_PEDS(vec.x, vec.y, vec.z, radius, flags)
-	end,
-	clear_area_of_cops = function (vec, radius, flags)
-		MISC.CLEAR_AREA_OF_COPS(vec.x, vec.y, vec.z, radius, flags)
-	end,
-	set_cloud_hat_opacity = MISC._SET_CLOUD_HAT_OPACITY,
-	get_cloud_hat_opacity = MISC._GET_CLOUD_HAT_OPACITY,
-	preload_cloud_hat = MISC.PRELOAD_CLOUD_HAT,
-	clear_cloud_hat = MISC.UNLOAD_CLOUD_HAT,
-	load_cloud_hat = MISC.LOAD_CLOUD_HAT,
-	unload_cloud_hat = MISC.UNLOAD_CLOUD_HAT,
-	get_ground_z = function (vec)
-		return util.get_ground_z(vec.x, vec.y)
-	end,
-	get_frame_count = MISC.GET_FRAME_COUNT,
-	get_frame_time = MISC.GET_FRAME_TIME,
-	shoot_single_bullet_between_coords = function (start, end_point, damage, weapon, owner, audible, invisible, speed)
-		MISC.SHOOT_SINGLE_BULLET_BETWEEN_COORDS(start.x, start.y, start.z, end_point.x, end_point.y, end_point.z, damage, weapon, owner, audible, invisible, speed)
-	end,
-	find_spawn_point_in_direction = function (pos, fwd, dist)
-		local vec_ptr = vec3.new()
-		local status MISC.FIND_SPAWN_POINT_IN_DIRECTION(pos.x, pos.y, pos.z, fwd.x, fwd.y, fwd.z, dist, vec_ptr)
-		local vec = v3(vec3.getX(vec_ptr), vec3.getY(vec_ptr), vec3.getZ(vec_ptr))
-		vec3.free(vec_ptr)
-		return status, vec
-	end
-}
+	gameplay = {
+		get_hash_key = util.joaat,
+		display_onscreen_keyboard = MISC.DISPLAY_ONSCREEN_KEYBOARD,
+		update_onscreen_keyboard = MISC.UPDATE_ONSCREEN_KEYBOARD,
+		get_onscreen_keyboard_result = MISC.GET_ONSCREEN_KEYBOARD_RESULT,
+		is_onscreen_keyboard_active = function ()
+			return MISC.UPDATE_ONSCREEN_KEYBOARD() ~= -1
+		end,
+		set_override_weather = MISC.SET_OVERRIDE_WEATHER,
+		clear_override_weather = MISC.CLEAR_OVERRIDE_WEATHER,
+		set_blackout = GRAPHICS.SET_ARTIFICIAL_LIGHTS_STATE,
+		set_mobile_radio = AUDIO.SET_MOBILE_RADIO_ENABLED_DURING_GAMEPLAY,
+		get_game_state = function()
+			return entities.player_info_get_game_state(entities.get_player_info(entities.handle_to_pointer(players.user_ped())))
+		end,
+		is_game_state = function(state)
+			return gameplay.get_game_state() == state
+		end,
+		clear_area_of_objects = function (vec, radius, flags)
+			MISC.CLEAR_AREA_OF_OBJECTS(vec.x, vec.y, vec.z, radius, flags)
+		end,
+		clear_area_of_vehicles = function (coord, radius, a3, a4, a5, a6, a7)
+			MISC.CLEAR_AREA_OF_VEHICLES(coord.x, coord.y, coord.z, radius, a3, a4, a5, a6, a7)
+		end,
+		clear_area_of_peds = function (vec, radius, flags)
+			MISC.CLEAR_AREA_OF_PEDS(vec.x, vec.y, vec.z, radius, flags)
+		end,
+		clear_area_of_cops = function (vec, radius, flags)
+			MISC.CLEAR_AREA_OF_COPS(vec.x, vec.y, vec.z, radius, flags)
+		end,
+		set_cloud_hat_opacity = MISC._SET_CLOUD_HAT_OPACITY,
+		get_cloud_hat_opacity = MISC._GET_CLOUD_HAT_OPACITY,
+		preload_cloud_hat = MISC.PRELOAD_CLOUD_HAT,
+		clear_cloud_hat = MISC.UNLOAD_CLOUD_HAT,
+		load_cloud_hat = MISC.LOAD_CLOUD_HAT,
+		unload_cloud_hat = MISC.UNLOAD_CLOUD_HAT,
+		get_ground_z = function (vec)
+			return util.get_ground_z(vec.x, vec.y)
+		end,
+		get_frame_count = MISC.GET_FRAME_COUNT,
+		get_frame_time = MISC.GET_FRAME_TIME,
+		shoot_single_bullet_between_coords = function (start, end_point, damage, weapon, owner, audible, invisible, speed)
+			MISC.SHOOT_SINGLE_BULLET_BETWEEN_COORDS(start.x, start.y, start.z, end_point.x, end_point.y, end_point.z, damage, weapon, owner, audible, invisible, speed)
+		end,
+		find_spawn_point_in_direction = function (pos, fwd, dist)
+			local vec_ptr = vec3.new()
+			local status MISC.FIND_SPAWN_POINT_IN_DIRECTION(pos.x, pos.y, pos.z, fwd.x, fwd.y, fwd.z, dist, vec_ptr)
+			local vec = v3(vec3.getX(vec_ptr), vec3.getY(vec_ptr), vec3.getZ(vec_ptr))
+			vec3.free(vec_ptr)
+			return status, vec
+		end
+	}
 
-streaming = {
-request_model = STREAMING.REQUEST_MODEL,
-has_model_loaded = STREAMING.HAS_MODEL_LOADED,
-set_model_as_no_longer_needed = STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED,
-is_model_in_cdimage = STREAMING.IS_MODEL_IN_CDIMAGE,
-is_model_valid = STREAMING.IS_MODEL_VALID,
-is_model_a_plane = VEHICLE.IS_THIS_MODEL_A_PLANE,
-is_model_a_vehicle = STREAMING.IS_MODEL_A_VEHICLE,
-is_model_a_heli = VEHICLE.IS_THIS_MODEL_A_HELI,
-request_ipl = STREAMING.REQUEST_IPL,
-remove_ipl = STREAMING.REMOVE_IPL,
-request_anim_set = STREAMING.REQUEST_ANIM_SET,
-has_anim_set_loaded = STREAMING.HAS_ANIM_SET_LOADED,
-request_anim_dict = STREAMING.REQUEST_ANIM_DICT,
-has_anim_dict_loaded = STREAMING.HAS_ANIM_DICT_LOADED,
-is_model_a_bike = VEHICLE.IS_THIS_MODEL_A_BIKE,
-is_model_a_car = VEHICLE.IS_THIS_MODEL_A_CAR,
-is_model_a_bicycle = VEHICLE.IS_THIS_MODEL_A_BICYCLE,
-is_model_a_quad = VEHICLE.IS_THIS_MODEL_A_QUADBIKE,
-is_model_a_boat = VEHICLE.IS_THIS_MODEL_A_BOAT,
-is_model_a_train = VEHICLE.IS_THIS_MODEL_A_TRAIN,
-is_model_an_object = function (hash)
-	return 	not VEHICLE.IS_THIS_MODEL_A_BIKE(hash) 		and
-			not VEHICLE.IS_THIS_MODEL_A_CAR(hash)		and
-			not VEHICLE.IS_THIS_MODEL_A_BICYCLE(hash)	and
-			not VEHICLE.IS_THIS_MODEL_A_QUADBIKE(hash)	and
-			not VEHICLE.IS_THIS_MODEL_A_BOAT(hash)		and
-			not VEHICLE.IS_THIS_MODEL_A_TRAIN(hash)		and
-			not STREAMING.IS_MODEL_A_PED(hash)
-end,
-is_model_a_world_object = function(hash) return false end,
-is_model_a_ped = STREAMING.IS_MODEL_A_PED,
-remove_anim_dict = STREAMING.REMOVE_ANIM_DICT,
-remove_anim_set = STREAMING.REMOVE_ANIM_SET
+	streaming = {
+	request_model = STREAMING.REQUEST_MODEL,
+	has_model_loaded = STREAMING.HAS_MODEL_LOADED,
+	set_model_as_no_longer_needed = STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED,
+	is_model_in_cdimage = STREAMING.IS_MODEL_IN_CDIMAGE,
+	is_model_valid = STREAMING.IS_MODEL_VALID,
+	is_model_a_plane = VEHICLE.IS_THIS_MODEL_A_PLANE,
+	is_model_a_vehicle = STREAMING.IS_MODEL_A_VEHICLE,
+	is_model_a_heli = VEHICLE.IS_THIS_MODEL_A_HELI,
+	request_ipl = STREAMING.REQUEST_IPL,
+	remove_ipl = STREAMING.REMOVE_IPL,
+	request_anim_set = STREAMING.REQUEST_ANIM_SET,
+	has_anim_set_loaded = STREAMING.HAS_ANIM_SET_LOADED,
+	request_anim_dict = STREAMING.REQUEST_ANIM_DICT,
+	has_anim_dict_loaded = STREAMING.HAS_ANIM_DICT_LOADED,
+	is_model_a_bike = VEHICLE.IS_THIS_MODEL_A_BIKE,
+	is_model_a_car = VEHICLE.IS_THIS_MODEL_A_CAR,
+	is_model_a_bicycle = VEHICLE.IS_THIS_MODEL_A_BICYCLE,
+	is_model_a_quad = VEHICLE.IS_THIS_MODEL_A_QUADBIKE,
+	is_model_a_boat = VEHICLE.IS_THIS_MODEL_A_BOAT,
+	is_model_a_train = VEHICLE.IS_THIS_MODEL_A_TRAIN,
+	is_model_an_object = function (hash)
+		return 	not VEHICLE.IS_THIS_MODEL_A_BIKE(hash) 		and
+				not VEHICLE.IS_THIS_MODEL_A_CAR(hash)		and
+				not VEHICLE.IS_THIS_MODEL_A_BICYCLE(hash)	and
+				not VEHICLE.IS_THIS_MODEL_A_QUADBIKE(hash)	and
+				not VEHICLE.IS_THIS_MODEL_A_BOAT(hash)		and
+				not VEHICLE.IS_THIS_MODEL_A_TRAIN(hash)		and
+				not STREAMING.IS_MODEL_A_PED(hash)
+	end,
+	is_model_a_world_object = function(hash) return false end,
+	is_model_a_ped = STREAMING.IS_MODEL_A_PED,
+	remove_anim_dict = STREAMING.REMOVE_ANIM_DICT,
+	remove_anim_set = STREAMING.REMOVE_ANIM_SET
 }
 
 audio = {
