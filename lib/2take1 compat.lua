@@ -1871,6 +1871,15 @@ graphics = {
 	end,
 	}
 
+	cam = {
+		get_gameplay_cam_rot = function() 
+			return CAM.GET_FINAL_RENDERED_CAM_COORD(2)
+		end,
+		get_gameplay_cam_pos = CAM.GET_GAMEPLAY_CAM_COORD,
+		get_gameplay_cam_relative_pitch = CAM.GET_GAMEPLAY_CAM_RELATIVE_PITCH,
+		get_gameplay_cam_relative_yaw = CAM.GET_GAMEPLAY_CAM_RELATIVE_HEADING
+	}
+
 	gameplay = {
 		get_hash_key = util.joaat,
 		display_onscreen_keyboard = MISC.DISPLAY_ONSCREEN_KEYBOARD,
