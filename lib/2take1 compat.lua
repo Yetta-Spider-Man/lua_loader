@@ -1007,7 +1007,7 @@ player = {
 	get_player_vehicle = function (pid)
 		return PED.GET_VEHICLE_PED_IS_IN(PLAYER.GET_PLAYER_PED(pid))
 	end,
-	is_player_vehicle_god = function ()
+	is_player_vehicle_god = function (pid)
 		return ENTITY.GET_ENTITY_CAN_BE_DAMAGED(PED.GET_VEHICLE_PED_IS_IN(PLAYER.GET_PLAYER_PED(pid)))
 	end,
 	is_player_host = function (pid)
@@ -1094,7 +1094,7 @@ ped = {
 	get_ped_last_weapon_impact = function (ped)
 		local vec = vec3.new()
 		PED.GET_PED_LAST_WEAPON_IMPACT_COORD(ped, vec)
-		coord = {x = vec3.getX(vec), y = vec3.getY(vec), z = vec3.getZ(vec)}
+		local coord = {x = vec3.getX(vec), y = vec3.getY(vec), z = vec3.getZ(vec)}
 		vec3.free(vec)
 		return coord
 	end,
