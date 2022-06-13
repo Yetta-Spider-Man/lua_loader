@@ -866,7 +866,7 @@ ui = {
 	notify_above_map = function (text, title, colour)
 		util.toast(title.."\n"..text, TOAST_ABOVE_MAP)
 	end,
-	get_entity_from_blip = notif_not_imp,
+	get_entity_from_blip = HUD.GET_BLIP_INFO_ID_ENTITY_INDEX,
 	get_blip_from_entity = HUD.GET_BLIP_FROM_ENTITY,
 	add_blip_for_entity = HUD.ADD_BLIP_FOR_ENTITY,
 	set_blip_sprite = HUD.SET_BLIP_SPRITE,
@@ -912,14 +912,20 @@ ui = {
 	add_blip_for_coord = function(pos)
 		HUD.ADD_BLIP_FOR_COORD(pos.x, pos.y, pos.z)
 	end,
-	set_blip_coord = notif_not_imp,
-	get_blip_coord = notif_not_imp,
+	set_blip_coord = function (blip, pos)
+		HUD.SET_BLIP_COORDS(blip, pos.x, pos.y, pos.z)
+	end,
+	get_blip_coord = HUD.GET_BLIP_COORDS,
 	remove_blip = HUD.REMOVE_BLIP,
 	set_blip_route = HUD.SET_BLIP_ROUTE,
-	set_blip_route_color = notif_not_imp,
-	get_current_notification = notif_not_imp,
-	remove_notification = notif_not_imp,
-	get_objective_coord = notif_not_imp,
+	set_blip_route_color = HUD.SET_BLIP_ROUTE_COLOUR,
+	get_current_notification = HUD.THEFEED_GET_FIRST_VISIBLE_DELETE_REMAINING,
+	remove_notification = HUD.THEFEED_REMOVE_ITEM,
+	get_objective_coord = function ()
+		local blip = HUD.GET_NEXT_BLIP_INFO_ID(143) or HUD.GET_NEXT_BLIP_INFO_ID(144) or HUD.GET_NEXT_BLIP_INFO_ID(145) or HUD.GET_NEXT_BLIP_INFO_ID(146)
+		if not blip then return false end
+		HUD.GET_BLIP_COORDS(blip)
+	end,
 }
 
 scriptdraw = {
@@ -1280,9 +1286,8 @@ entity = {
 		local minimum = vec3.new()
 		local maximum = vec3.new()
 		MISC.GET_MODEL_DIMENSIONS(hash, minimum, maximum)
-		local maximum_vec = {x = vec3.getX(maximum), y = vec3.getY(maximum), z = vec3.getZ(maximum)}
-		local minimum_vec = {x = vec3.getX(minimum), y = vec3.getY(minimum), z = vec3.getZ(minimum)}
-		vec3.free(minimum) vec3.free(maximum)
+		local maximum_vec = v3(maximum.x, maximum.y, maximum.z)
+		local minimum_vec = v3(minimum.x, minimum.y, minimum.z)
 		return minimum_vec, maximum_vec
 	end
 }
