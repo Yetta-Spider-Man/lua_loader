@@ -439,11 +439,12 @@ local feat = {
 }
 
 local player_feat = {
-    new = function(parent, feats)
+    new = function(parent, feats, type)
         local ft = {
 			feats = feats,
 			id=0,
 			parent_id=parent,
+			type=type,
 			data={},
 			_on=false,
 			_value=0,
@@ -741,11 +742,12 @@ menu = {
 			end
 		end
 
-		local new_player_feat = player_feat.new(parent, feats)
-		new_player_feat.id = util.joaat(name..type)
-		player_features[new_player_feat.id] = new_player_feat
-		new_player_feat.type = feature_type_ids.player[type]
+		local new_player_feat = player_feat.new(parent, feats, feature_type_ids.player[type])
+
+		new_player_feat.id = util.joaat(name..type) --generate an id to use for the player feature
+
 		existing_features[new_player_feat.id] = new_player_feat
+		player_features[new_player_feat.id] = new_player_feat
 		return new_player_feat
 	end,
 	notify = function (message, title, _, _)
