@@ -35,6 +35,11 @@ local function init()
 	if not filesystem.is_dir(dir) then
 		filesystem.mkdir(dir)
 	end
+	if not filesystem.is_regular_file(dir.."2Take1Menu.ini") then
+		local f = io.open(dir.."2Take1Menu.ini", "w")
+		f:write("[Keys]\nMenuRight=NUM6\nMenuSelect=NUM5\nMenuDown=NUM2\nMenu=NUM-\nMenuUp=NUM8\nMenuLeft=NUM4\nMenuBack=NUM0\nMenuTabPrev=NUM7\nMenuTabNext=NUM9")
+		f:close()
+	end
 	dir = dir .. "scripts\\"
 	if not filesystem.is_dir(dir) then
 		filesystem.mkdir(dir)
