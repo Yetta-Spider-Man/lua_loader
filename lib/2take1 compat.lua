@@ -1090,7 +1090,6 @@ ped = {
 		local vec = vec3.new()
 		PED.GET_PED_LAST_WEAPON_IMPACT_COORD(ped, vec)
 		local coord = {x = vec3.getX(vec), y = vec3.getY(vec), z = vec3.getZ(vec)}
-		vec3.free(vec)
 		return coord
 	end,
 	set_ped_combat_ability = PED.SET_PED_COMBAT_ABILITY,
@@ -1922,7 +1921,6 @@ cam = {
 			local vec_ptr = vec3.new()
 			local status MISC.FIND_SPAWN_POINT_IN_DIRECTION(pos.x, pos.y, pos.z, fwd.x, fwd.y, fwd.z, dist, vec_ptr)
 			local vec = v3(vec3.getX(vec_ptr), vec3.getY(vec_ptr), vec3.getZ(vec_ptr))
-			vec3.free(vec_ptr)
 			return status, vec
 		end
 	}
