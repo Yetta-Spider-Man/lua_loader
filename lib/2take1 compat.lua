@@ -1943,15 +1943,7 @@ streaming = {
 	is_model_a_quad = VEHICLE.IS_THIS_MODEL_A_QUADBIKE,
 	is_model_a_boat = VEHICLE.IS_THIS_MODEL_A_BOAT,
 	is_model_a_train = VEHICLE.IS_THIS_MODEL_A_TRAIN,
-	is_model_an_object = function (hash)
-		return 	not VEHICLE.IS_THIS_MODEL_A_BIKE(hash) 		and
-				not VEHICLE.IS_THIS_MODEL_A_CAR(hash)		and
-				not VEHICLE.IS_THIS_MODEL_A_BICYCLE(hash)	and
-				not VEHICLE.IS_THIS_MODEL_A_QUADBIKE(hash)	and
-				not VEHICLE.IS_THIS_MODEL_A_BOAT(hash)		and
-				not VEHICLE.IS_THIS_MODEL_A_TRAIN(hash)		and
-				not STREAMING.IS_MODEL_A_PED(hash)
-	end,
+	is_model_an_object = util.is_this_model_an_object,
 	is_model_a_world_object = function(hash) return false end,
 	is_model_a_ped = STREAMING.IS_MODEL_A_PED,
 	remove_anim_dict = STREAMING.REMOVE_ANIM_DICT,
